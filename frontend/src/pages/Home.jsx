@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Features from "../components/Sections/Features";
+import ServicesSection from "../components/Sections/ServicesSection";
 
 const Home = () => {
   const featuredOrgs = [
@@ -85,9 +86,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Service Provided */}
+      <ServicesSection />
 
       {/* Featured Organizations */}
-      <section className="py-16 px-4 bg-gpdark">
+      {/* <section className="py-16 px-4 bg-gpdark">
         <div className="max-w-7xl mx-auto space-y-8 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold">Featured Organizations</h2>
@@ -133,10 +136,10 @@ const Home = () => {
             </button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
       {/* Upcoming Tournaments */}
-      <section className="py-16 px-4 bg-gpblack">
+      {/* <section className="py-16 px-4 bg-gpblack">
         <div className="max-w-7xl mx-auto space-y-8 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold">Upcoming Tournaments</h2>
@@ -173,10 +176,10 @@ const Home = () => {
             </button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
       {/* Platform Features */}
-      <Features />
+      {/* <Features /> */}
     </div>
   );
 };

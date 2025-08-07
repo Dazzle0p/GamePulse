@@ -13,7 +13,7 @@ const Footer = () => {
                 <Trophy className="h-5 w-5 text-white" />
               </div>
               <span className="font-bold text-xl bg-gradient-to-r from-gpred-500 to-gporange-500 bg-clip-text text-transparent">
-                IGC Platform
+                Game Pulse
               </span>
             </Link>
             <p className="text-gpgray text-sm">
