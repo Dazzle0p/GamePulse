@@ -10,7 +10,7 @@ import {
   Bookmark,
 } from "lucide-react";
 
-const GamingNews = () => {
+const NewsPage = () => {
   const gamingNews = [
     {
       id: 0,
@@ -116,7 +116,7 @@ const GamingNews = () => {
   };
   return (
     <div className="min-h-screen bg-gpblack">
-      <main className="pt-20">
+      <main>
         {/* Hero Banner */}
         <section className="relative py-20 bg-gradient-to-b from-gpred-900 to-gpblack border-b border-gporange-300/20">
           <div className="absolute inset-0 opacity-15 bg-[url('https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1000')] bg-cover bg-center"></div>
@@ -355,4 +355,4 @@ const GamingNews = () => {
   );
 };
 
-export default GamingNews;
+export default NewsPage;

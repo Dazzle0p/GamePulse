@@ -10,14 +10,21 @@ import {
   Instagram,
   Youtube,
   Globe,
-  ChevronDown,
   ChevronRight,
   Menu,
   X,
   ArrowLeft,
+  Star,
+  Briefcase,
+  Mic,
+  Award,
+  BarChart2,
+  Heart,
+  MessageSquare,
+  Share2,
 } from "lucide-react";
 
-// Theme color mapping with shades for dark/light modes
+// Theme color mapping
 const colorMap = {
   green: {
     primary: "bg-green-600",
@@ -68,26 +75,158 @@ const organizations = [
     themeColor: "green",
     description:
       "Team SouL is one of India's premier esports organizations, known for its dominance in mobile gaming tournaments. Founded by MortaL, the team has consistently ranked among the top competitors in BGMI and Valorant circuits.",
-    roster: [
-      { name: "MortaL", role: "Owner/Player", game: "BGMI" },
-      { name: "Regaltos", role: "Player", game: "BGMI" },
-      { name: "Akshat", role: "Player", game: "BGMI" },
-      { name: "Rony", role: "Player", game: "Valorant" },
-      { name: "Sid", role: "Player", game: "Valorant" },
+
+    // Memorable achievement
+    memorableAchievement: {
+      title: "BMPS Season 1 Champions",
+      date: "2022",
+      description: "Dominating performance with 3 chicken dinners in finals",
+      prize: "₹20 Lakhs",
+    },
+
+    // Ownership
+    ownership: [
+      {
+        name: "Naman 'MortaL' Mathur",
+        role: "Founder & CEO",
+        quote: "We don't just play games, we create legacies",
+        social: {
+          twitter: "#",
+          instagram: "#",
+          youtube: "#",
+        },
+      },
+      {
+        name: "Rishabh 'Regaltos' Kandoi",
+        role: "Co-Owner",
+        quote: "Passion meets professionalism in our approach",
+        social: {
+          twitter: "#",
+          instagram: "#",
+          youtube: "#",
+        },
+      },
     ],
+
+    // Top creators
+    topCreators: [
+      {
+        name: "Mortal",
+        role: "Content Creator",
+        followers: "6.2M",
+        platform: "YouTube",
+        social: {
+          youtube: "#",
+          instagram: "#",
+        },
+      },
+      {
+        name: "Regaltos",
+        role: "Streamer",
+        followers: "1.8M",
+        platform: "YouTube",
+        social: {
+          youtube: "#",
+          instagram: "#",
+        },
+      },
+      {
+        name: "SoulGoblin",
+        role: "Content Strategist",
+        followers: "850K",
+        platform: "Instagram",
+        social: {
+          instagram: "#",
+        },
+      },
+    ],
+
+    // Rosters by game
+    rosters: {
+      bgmi: [
+        { name: "MortaL", role: "IGL", joinDate: "2019" },
+        { name: "Regaltos", role: "Assaulter", joinDate: "2020" },
+        { name: "Akshat", role: "Support", joinDate: "2021" },
+        { name: "Rony", role: "Sniper", joinDate: "2022" },
+      ],
+      valorant: [
+        { name: "Sid", role: "Duelist", joinDate: "2021" },
+        { name: "Rony", role: "Controller", joinDate: "2022" },
+        { name: "Revo", role: "Initiator", joinDate: "2022" },
+        { name: "Raja", role: "Sentinel", joinDate: "2023" },
+      ],
+    },
+
+    // Achievements
     achievementsList: [
-      { title: "BMPS Season 1 Champions", date: "2022", game: "BGMI" },
-      { title: "Skyesports Championship Winners", date: "2021", game: "BGMI" },
+      {
+        title: "BMPS Season 1 Champions",
+        date: "2022",
+        game: "BGMI",
+        prize: "₹20 Lakhs",
+      },
+      {
+        title: "Skyesports Championship Winners",
+        date: "2021",
+        game: "BGMI",
+        prize: "₹15 Lakhs",
+      },
       {
         title: "Valorant Conquerors Championship",
         date: "2023",
         game: "Valorant",
+        prize: "₹12 Lakhs",
+      },
+      {
+        title: "Free Fire India Championship",
+        date: "2022",
+        game: "Free Fire",
+        prize: "₹10 Lakhs",
       },
     ],
+
+    // Upcoming events
     upcomingEvents: [
-      { title: "BGMI Masters Series", date: "Oct 15, 2023" },
-      { title: "Valorant India Invitational", date: "Nov 5, 2023" },
+      {
+        title: "BGMI Masters Series",
+        date: "Oct 15, 2023",
+        prize: "₹50 Lakhs",
+      },
+      {
+        title: "Valorant India Invitational",
+        date: "Nov 5, 2023",
+        prize: "₹30 Lakhs",
+      },
     ],
+
+    // Brand collaborations
+    collaborations: [
+      {
+        brand: "Red Bull",
+        type: "Energy Drink",
+        duration: "2021-Present",
+        description: "Official energy drink partner",
+      },
+      {
+        brand: "Lenovo Legion",
+        type: "Gaming Gear",
+        duration: "2022-Present",
+        description: "Official gaming laptop partner",
+      },
+      {
+        brand: "Boat",
+        type: "Audio",
+        duration: "2020-2022",
+        description: "Exclusive audio equipment partner",
+      },
+      {
+        brand: "AMD",
+        type: "Hardware",
+        duration: "2022-Present",
+        description: "Processor technology partner",
+      },
+    ],
+
     social: {
       twitter: "https://twitter.com/teamsoulofficial",
       instagram: "https://instagram.com/teamsoulofficial",
@@ -95,81 +234,7 @@ const organizations = [
       website: "https://teamsoul.gg",
     },
   },
-  {
-    id: "godlike",
-    name: "GodLike Esports",
-    logo: "⚡",
-    tagline: "Born to Dominate",
-    foundingYear: 2020,
-    headquarters: "Delhi, India",
-    games: ["BGMI", "Free Fire", "Call of Duty"],
-    achievements: 12,
-    members: 38,
-    themeColor: "yellow",
-    description:
-      "GodLike Esports is a powerhouse in the Indian esports scene, known for its aggressive playstyle and championship-winning teams across multiple games.",
-    roster: [
-      { name: "Jonathan", role: "Player", game: "BGMI" },
-      { name: "Zgod", role: "Player", game: "BGMI" },
-      { name: "Neyoo", role: "Player", game: "Call of Duty" },
-    ],
-    achievementsList: [
-      {
-        title: "Free Fire India Championship",
-        date: "2022",
-        game: "Free Fire",
-      },
-      {
-        title: "CODM World Championship Qualifiers",
-        date: "2023",
-        game: "Call of Duty",
-      },
-    ],
-    upcomingEvents: [{ title: "Free Fire All-Stars", date: "Oct 20, 2023" }],
-    social: {
-      twitter: "https://twitter.com/godlike_esports",
-      instagram: "https://instagram.com/godlike_esports",
-      youtube: "https://youtube.com/godlikeesports",
-      website: "https://godlikeesports.in",
-    },
-  },
-  {
-    id: "velocity",
-    name: "Velocity Gaming",
-    logo: "🚀",
-    tagline: "Accelerating Esports Excellence",
-    foundingYear: 2018,
-    headquarters: "Bangalore, India",
-    games: ["Valorant", "CS2", "BGMI"],
-    achievements: 20,
-    members: 52,
-    themeColor: "blue",
-    description:
-      "Velocity Gaming is a premier esports organization with a focus on PC gaming. Known for their strategic gameplay and consistent performances in Valorant tournaments.",
-    roster: [
-      { name: "Antidote", role: "Player", game: "Valorant" },
-      { name: "DeXteR", role: "Player", game: "Valorant" },
-      { name: "Karam", role: "Player", game: "CS2" },
-    ],
-    achievementsList: [
-      {
-        title: "Valorant Conquerors Championship",
-        date: "2022",
-        game: "Valorant",
-      },
-      { title: "ESL India Championship", date: "2021", game: "CS2" },
-    ],
-    upcomingEvents: [
-      { title: "Valorant Challengers South Asia", date: "Oct 25, 2023" },
-      { title: "CS2 India Open", date: "Nov 10, 2023" },
-    ],
-    social: {
-      twitter: "https://twitter.com/velocitygg",
-      instagram: "https://instagram.com/velocitygg",
-      youtube: "https://youtube.com/velocitygg",
-      website: "https://velocitygg.gg",
-    },
-  },
+  // Other organizations would follow the same structure
 ];
 
 const OrganizationDetails = () => {
@@ -177,7 +242,6 @@ const OrganizationDetails = () => {
   const org = organizations.find((org) => org.id === id);
   const [activeTab, setActiveTab] = useState("overview");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [themeMode, setThemeMode] = useState("dark"); // 'dark' or 'light'
 
   if (!org) {
     return (
@@ -193,24 +257,9 @@ const OrganizationDetails = () => {
   }
 
   const theme = colorMap[org.themeColor] || colorMap.green;
-  const bgClass = themeMode === "dark" ? "bg-gray-900" : "bg-gray-50";
-  const textClass = themeMode === "dark" ? "text-white" : "text-gray-900";
-  const cardClass = themeMode === "dark" ? "bg-gray-800" : "bg-white";
 
   return (
-    <div
-      className={`min-h-screen ${bgClass} ${textClass} transition-colors duration-300`}
-    >
-      {/* Theme Toggle */}
-      <div className="fixed top-4 right-4 z-50">
-        <button
-          onClick={() => setThemeMode(themeMode === "dark" ? "light" : "dark")}
-          className={`p-2 rounded-full ${theme.primary} text-white shadow-lg`}
-        >
-          {themeMode === "dark" ? "☀️" : "🌙"}
-        </button>
-      </div>
-
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Mobile Navigation */}
       <div
         className={`md:hidden fixed top-0 left-0 w-full ${theme.primary} p-4 flex justify-between items-center z-40`}
@@ -235,46 +284,24 @@ const OrganizationDetails = () => {
       {isMobileMenuOpen && (
         <div className={`md:hidden fixed inset-0 z-30 ${theme.primary} pt-16`}>
           <div className="p-4 space-y-4">
-            <button
-              onClick={() => setActiveTab("overview")}
-              className={`w-full text-left p-3 rounded-lg ${
-                activeTab === "overview"
-                  ? "bg-black/20 text-white"
-                  : "text-gray-200"
-              }`}
-            >
-              Overview
-            </button>
-            <button
-              onClick={() => setActiveTab("roster")}
-              className={`w-full text-left p-3 rounded-lg ${
-                activeTab === "roster"
-                  ? "bg-black/20 text-white"
-                  : "text-gray-200"
-              }`}
-            >
-              Roster
-            </button>
-            <button
-              onClick={() => setActiveTab("achievements")}
-              className={`w-full text-left p-3 rounded-lg ${
-                activeTab === "achievements"
-                  ? "bg-black/20 text-white"
-                  : "text-gray-200"
-              }`}
-            >
-              Achievements
-            </button>
-            <button
-              onClick={() => setActiveTab("events")}
-              className={`w-full text-left p-3 rounded-lg ${
-                activeTab === "events"
-                  ? "bg-black/20 text-white"
-                  : "text-gray-200"
-              }`}
-            >
-              Events
-            </button>
+            {[
+              "overview",
+              "roster",
+              "creators",
+              "achievements",
+              "events",
+              "collaborations",
+            ].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`w-full text-left p-3 rounded-lg ${
+                  activeTab === tab ? "bg-black/20 text-white" : "text-gray-200"
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
           </div>
         </div>
       )}
@@ -284,14 +311,6 @@ const OrganizationDetails = () => {
         className={`pt-16 md:pt-0 bg-gradient-to-r ${theme.gradient} text-white`}
       >
         <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 relative">
-          <Link
-            to="/organizations"
-            className="hidden md:flex items-center text-white/80 hover:text-white mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-1" />
-            <span>Back to Organizations</span>
-          </Link>
-
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
             <div className="text-7xl bg-black/20 p-6 rounded-2xl">
               {org.logo}
@@ -345,55 +364,70 @@ const OrganizationDetails = () => {
                 >
                   <Globe className="w-5 h-5" />
                 </a>
+                <button className="bg-black/20 p-2 rounded-full hover:bg-black/30">
+                  <Share2 className="w-5 h-5" />
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Stats Banner */}
+      <div className="bg-gray-800 py-4">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div className="text-xl md:text-2xl font-bold">
+                {org.achievements}
+              </div>
+              <div className="text-xs text-gray-400">ACHIEVEMENTS</div>
+            </div>
+            <div>
+              <div className="text-xl md:text-2xl font-bold">
+                {org.members}+
+              </div>
+              <div className="text-xs text-gray-400">MEMBERS</div>
+            </div>
+            <div>
+              <div className="text-xl md:text-2xl font-bold">
+                {Object.keys(org.rosters).length}
+              </div>
+              <div className="text-xs text-gray-400">COMPETITIVE GAMES</div>
+            </div>
+            <div>
+              <div className="text-xl md:text-2xl font-bold">
+                {org.collaborations.length}
+              </div>
+              <div className="text-xs text-gray-400">BRAND PARTNERS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Tabs */}
-      <div className="sticky top-0 z-20 bg-gray-800 border-b border-gray-700 md:border-none">
-        <div className="max-w-7xl mx-auto hidden md:flex justify-center">
-          <button
-            onClick={() => setActiveTab("overview")}
-            className={`px-6 py-4 font-medium ${
-              activeTab === "overview"
-                ? `${theme.primary} text-white`
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            Overview
-          </button>
-          <button
-            onClick={() => setActiveTab("roster")}
-            className={`px-6 py-4 font-medium ${
-              activeTab === "roster"
-                ? `${theme.primary} text-white`
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            Roster
-          </button>
-          <button
-            onClick={() => setActiveTab("achievements")}
-            className={`px-6 py-4 font-medium ${
-              activeTab === "achievements"
-                ? `${theme.primary} text-white`
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            Achievements
-          </button>
-          <button
-            onClick={() => setActiveTab("events")}
-            className={`px-6 py-4 font-medium ${
-              activeTab === "events"
-                ? `${theme.primary} text-white`
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            Events
-          </button>
+      <div className="sticky top-0 z-20 bg-gray-800 border-b border-gray-700">
+        <div className="max-w-7xl mx-auto flex overflow-x-auto hide-scrollbar">
+          {[
+            "overview",
+            "roster",
+            "creators",
+            "achievements",
+            "events",
+            "collaborations",
+          ].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-4 font-medium min-w-max ${
+                activeTab === tab
+                  ? `${theme.primary} text-white`
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -402,69 +436,91 @@ const OrganizationDetails = () => {
         {/* Overview Tab */}
         {activeTab === "overview" && (
           <div className="space-y-8">
-            <div className={`p-6 rounded-xl ${cardClass} shadow-lg`}>
+            {/* About Section */}
+            <div className="bg-gray-800 rounded-2xl p-6">
               <h2 className="text-2xl font-bold mb-4">About {org.name}</h2>
-              <p className="mb-6 leading-relaxed">{org.description}</p>
+              <p className="mb-6 leading-relaxed text-gray-300">
+                {org.description}
+              </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div
-                  className={`p-4 rounded-lg ${theme.light} ${
-                    themeMode === "dark" ? "bg-opacity-20" : "bg-opacity-50"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <Trophy className={`w-8 h-8 ${theme.text} mr-3`} />
-                    <div>
-                      <p className="text-2xl font-bold">{org.achievements}</p>
-                      <p className="text-sm">Achievements</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className={`p-4 rounded-lg ${theme.light} ${
-                    themeMode === "dark" ? "bg-opacity-20" : "bg-opacity-50"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <Users className={`w-8 h-8 ${theme.text} mr-3`} />
-                    <div>
-                      <p className="text-2xl font-bold">{org.members}</p>
-                      <p className="text-sm">Members</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className={`p-4 rounded-lg ${theme.light} ${
-                    themeMode === "dark" ? "bg-opacity-20" : "bg-opacity-50"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <Calendar className={`w-8 h-8 ${theme.text} mr-3`} />
-                    <div>
-                      <p className="text-2xl font-bold">{org.foundingYear}</p>
-                      <p className="text-sm">Established</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="flex items-center text-gray-400 text-sm">
+                <Heart className="w-4 h-4 mr-1" />
+                <span>1.2K supporters</span>
               </div>
             </div>
 
-            <div className={`p-6 rounded-xl ${cardClass} shadow-lg`}>
+            {/* Memorable Achievement */}
+            <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-green-500">
+              <div className="flex items-center mb-4">
+                <Award className="w-8 h-8 text-yellow-400 mr-3" />
+                <h2 className="text-2xl font-bold">Memorable Achievement</h2>
+              </div>
+
+              <div className="bg-black/30 p-4 rounded-xl">
+                <h3 className="text-xl font-bold text-green-400">
+                  {org.memorableAchievement.title}
+                </h3>
+                <div className="flex items-center text-gray-400 mt-1">
+                  <Calendar className="w-4 h-4 mr-1" />
+                  <span>{org.memorableAchievement.date}</span>
+                  <span className="mx-2">•</span>
+                  <Trophy className="w-4 h-4 mr-1" />
+                  <span>{org.memorableAchievement.prize}</span>
+                </div>
+                <p className="mt-3 text-gray-300">
+                  {org.memorableAchievement.description}
+                </p>
+              </div>
+            </div>
+
+            {/* Ownership Section */}
+            <div className="bg-gray-800 rounded-2xl p-6">
+              <h2 className="text-2xl font-bold mb-4">Leadership</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {org.ownership.map((owner, index) => (
+                  <div key={index} className="bg-gray-900/50 p-4 rounded-xl">
+                    <div className="flex items-start">
+                      <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                      <div className="ml-4 flex-1">
+                        <h3 className="font-bold text-lg">{owner.name}</h3>
+                        <p className="text-sm text-gray-500">{owner.role}</p>
+                        <p className="mt-2 text-gray-400 italic">
+                          "{owner.quote}"
+                        </p>
+
+                        <div className="flex mt-3 gap-2">
+                          <a
+                            href={owner.social.twitter}
+                            className="text-gray-500 hover:text-blue-400"
+                          >
+                            <Twitter className="w-5 h-5" />
+                          </a>
+                          <a
+                            href={owner.social.instagram}
+                            className="text-gray-500 hover:text-pink-500"
+                          >
+                            <Instagram className="w-5 h-5" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Competitive Games */}
+            <div className="bg-gray-800 rounded-2xl p-6">
               <h2 className="text-2xl font-bold mb-4">Competitive Games</h2>
               <div className="flex flex-wrap gap-3">
                 {org.games.map((game) => (
-                  <span
+                  <div
                     key={game}
-                    className={`px-4 py-2 rounded-full ${theme.light} ${
-                      theme.text
-                    } font-medium ${
-                      themeMode === "dark" ? "bg-opacity-20" : "bg-opacity-50"
-                    }`}
+                    className="px-4 py-2 bg-gray-900 rounded-lg font-medium flex items-center"
                   >
+                    <span className="mr-2">🎮</span>
                     {game}
-                  </span>
+                  </div>
                 ))}
               </div>
             </div>
@@ -473,40 +529,86 @@ const OrganizationDetails = () => {
 
         {/* Roster Tab */}
         {activeTab === "roster" && (
-          <div className={`p-6 rounded-xl ${cardClass} shadow-lg`}>
-            <h2 className="text-2xl font-bold mb-6">Team Roster</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {org.roster.map((member, index) => (
+          <div className="space-y-8">
+            {/* Rosters by Game */}
+            {Object.entries(org.rosters).map(([game, players]) => (
+              <div key={game} className="bg-gray-800 rounded-2xl p-6">
+                <h2 className="text-2xl font-bold mb-4">
+                  {game.toUpperCase()} Roster
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {players.map((player, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-900/50 p-4 rounded-xl flex items-center"
+                    >
+                      <div className="bg-gray-200 border-2 border-dashed rounded-xl w-14 h-14" />
+                      <div className="ml-4 flex-1">
+                        <h3 className="font-bold text-lg">{player.name}</h3>
+                        <div className="flex justify-between mt-1">
+                          <span className="text-sm text-gray-500">
+                            {player.role}
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            Since {player.joinDate}
+                          </span>
+                        </div>
+                      </div>
+                      <button className="text-gray-500 hover:text-white">
+                        <MessageSquare className="w-5 h-5" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Creators Tab */}
+        {activeTab === "creators" && (
+          <div className="bg-gray-800 rounded-2xl p-6">
+            <h2 className="text-2xl font-bold mb-6">Top Creators</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {org.topCreators.map((creator, index) => (
                 <div
                   key={index}
-                  className={`p-4 rounded-xl border ${theme.border} ${
-                    themeMode === "dark"
-                      ? "border-opacity-30"
-                      : "border-opacity-50"
-                  } hover:${theme.border} hover:${
-                    themeMode === "dark"
-                      ? "border-opacity-70"
-                      : "border-opacity-100"
-                  } transition-all`}
+                  className="bg-gray-900/50 rounded-xl overflow-hidden"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-                    <div>
-                      <h3 className="font-bold text-lg">{member.name}</h3>
-                      <p className="text-sm text-gray-500">{member.role}</p>
-                      <div className="flex items-center mt-1">
-                        <span
-                          className={`text-xs px-2 py-1 rounded ${
-                            theme.light
-                          } ${theme.text} ${
-                            themeMode === "dark"
-                              ? "bg-opacity-20"
-                              : "bg-opacity-50"
-                          }`}
-                        >
-                          {member.game}
-                        </span>
+                  <div className="p-4">
+                    <div className="flex items-center">
+                      <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                      <div className="ml-4">
+                        <h3 className="font-bold text-lg">{creator.name}</h3>
+                        <p className="text-sm text-gray-500">{creator.role}</p>
                       </div>
+                    </div>
+
+                    <div className="mt-4 flex justify-between items-center">
+                      <div>
+                        <div className="text-xl font-bold">
+                          {creator.followers}
+                        </div>
+                        <div className="text-xs text-gray-500">Followers</div>
+                      </div>
+                      <div className="text-sm bg-gray-800 px-2 py-1 rounded">
+                        {creator.platform}
+                      </div>
+                    </div>
+
+                    <div className="flex mt-4 gap-3">
+                      <a
+                        href={creator.social.youtube}
+                        className="text-gray-500 hover:text-red-500"
+                      >
+                        <Youtube className="w-5 h-5" />
+                      </a>
+                      <a
+                        href={creator.social.instagram}
+                        className="text-gray-500 hover:text-pink-500"
+                      >
+                        <Instagram className="w-5 h-5" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -517,79 +619,152 @@ const OrganizationDetails = () => {
 
         {/* Achievements Tab */}
         {activeTab === "achievements" && (
-          <div className={`p-6 rounded-xl ${cardClass} shadow-lg`}>
-            <h2 className="text-2xl font-bold mb-6">Achievements & Trophies</h2>
-            <div className="space-y-4">
-              {org.achievementsList.map((achievement, index) => (
-                <div
-                  key={index}
-                  className={`p-4 rounded-lg border-l-4 ${theme.border} ${
-                    themeMode === "dark" ? "bg-gray-800" : "bg-gray-50"
-                  }`}
-                >
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-bold text-lg">{achievement.title}</h3>
-                      <div className="flex items-center mt-1">
-                        <span
-                          className={`text-xs px-2 py-1 rounded mr-2 ${
-                            theme.light
-                          } ${theme.text} ${
-                            themeMode === "dark"
-                              ? "bg-opacity-20"
-                              : "bg-opacity-50"
-                          }`}
-                        >
-                          {achievement.game}
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          {achievement.date}
-                        </span>
+          <div className="space-y-6">
+            <div className="bg-gray-800 rounded-2xl p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Achievements</h2>
+                <div className="flex items-center text-yellow-400">
+                  <Trophy className="w-5 h-5 mr-1" />
+                  <span>{org.achievements} Trophies</span>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {org.achievementsList.map((achievement, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-900/50 p-4 rounded-xl border-l-4 border-yellow-500"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="font-bold text-lg">
+                          {achievement.title}
+                        </h3>
+                        <div className="flex items-center mt-2">
+                          <span className="text-sm px-2 py-1 bg-gray-800 rounded mr-2">
+                            {achievement.game}
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            <Calendar className="inline w-4 h-4 mr-1" />
+                            {achievement.date}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="bg-yellow-500/10 p-2 rounded">
+                        <div className="font-bold text-yellow-400">
+                          {achievement.prize}
+                        </div>
                       </div>
                     </div>
-                    <div
-                      className={`p-2 rounded ${theme.light} ${
-                        themeMode === "dark" ? "bg-opacity-20" : "bg-opacity-30"
-                      }`}
-                    >
-                      <Trophy className={`w-5 h-5 ${theme.text}`} />
-                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats Section */}
+            <div className="bg-gray-800 rounded-2xl p-6">
+              <h2 className="text-2xl font-bold mb-4">Tournament Statistics</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div className="bg-gray-900/50 p-4 rounded-xl">
+                  <div className="text-3xl font-bold text-green-400">85%</div>
+                  <div className="text-sm text-gray-400">Win Rate</div>
+                </div>
+                <div className="bg-gray-900/50 p-4 rounded-xl">
+                  <div className="text-3xl font-bold">42</div>
+                  <div className="text-sm text-gray-400">
+                    Tournaments Played
                   </div>
                 </div>
-              ))}
+                <div className="bg-gray-900/50 p-4 rounded-xl">
+                  <div className="text-3xl font-bold text-yellow-400">15</div>
+                  <div className="text-sm text-gray-400">Finals Reached</div>
+                </div>
+                <div className="bg-gray-900/50 p-4 rounded-xl">
+                  <div className="text-3xl font-bold">₹2.1Cr</div>
+                  <div className="text-sm text-gray-400">Total Winnings</div>
+                </div>
+              </div>
             </div>
           </div>
         )}
 
         {/* Events Tab */}
         {activeTab === "events" && (
-          <div className={`p-6 rounded-xl ${cardClass} shadow-lg`}>
-            <h2 className="text-2xl font-bold mb-6">Upcoming Events</h2>
-            <div className="space-y-4">
-              {org.upcomingEvents.map((event, index) => (
-                <div
-                  key={index}
-                  className={`p-4 rounded-lg ${
-                    themeMode === "dark" ? "bg-gray-800" : "bg-gray-50"
-                  } border ${theme.border} ${
-                    themeMode === "dark"
-                      ? "border-opacity-30"
-                      : "border-opacity-50"
-                  }`}
-                >
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h3 className="font-bold">{event.title}</h3>
-                      <div className="flex items-center mt-1 text-sm">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        <span>{event.date}</span>
+          <div className="space-y-6">
+            <div className="bg-gray-800 rounded-2xl p-6">
+              <h2 className="text-2xl font-bold mb-4">Upcoming Events</h2>
+              <div className="space-y-4">
+                {org.upcomingEvents.map((event, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-900/50 p-4 rounded-xl border border-gray-700"
+                  >
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <h3 className="font-bold">{event.title}</h3>
+                        <div className="flex items-center mt-2 text-sm text-gray-400">
+                          <Calendar className="w-4 h-4 mr-2" />
+                          <span>{event.date}</span>
+                          <span className="mx-2">•</span>
+                          <Trophy className="w-4 h-4 mr-2" />
+                          <span>{event.prize}</span>
+                        </div>
+                      </div>
+                      <button
+                        className={`px-4 py-2 rounded ${theme.primary} text-white flex items-center`}
+                      >
+                        Register <ChevronRight className="w-4 h-4 ml-1" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-gray-800 rounded-2xl p-6">
+              <h2 className="text-2xl font-bold mb-4">Recent Events</h2>
+              <div className="space-y-4">
+                {org.achievementsList.slice(0, 3).map((event, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-900/50 p-4 rounded-xl border border-gray-700"
+                  >
+                    <div className="flex justify-between">
+                      <div>
+                        <h3 className="font-bold">{event.title}</h3>
+                        <div className="flex items-center mt-2 text-sm text-gray-400">
+                          <Calendar className="w-4 h-4 mr-2" />
+                          <span>{event.date}</span>
+                        </div>
+                      </div>
+                      <div className="text-green-400 font-bold">
+                        🏆 Champion
                       </div>
                     </div>
-                    <button
-                      className={`px-4 py-2 rounded ${theme.primary} text-white flex items-center`}
-                    >
-                      Register <ChevronRight className="w-4 h-4 ml-1" />
-                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Collaborations Tab */}
+        {activeTab === "collaborations" && (
+          <div className="bg-gray-800 rounded-2xl p-6">
+            <h2 className="text-2xl font-bold mb-6">Brand Collaborations</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {org.collaborations.map((collab, index) => (
+                <div key={index} className="bg-gray-900/50 p-4 rounded-xl">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                    <div className="ml-4">
+                      <h3 className="font-bold text-lg">{collab.brand}</h3>
+                      <p className="text-sm text-gray-500">{collab.type}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300">{collab.description}</p>
+                  <div className="mt-3 text-sm text-gray-500">
+                    {collab.duration}
                   </div>
                 </div>
               ))}
@@ -613,7 +788,7 @@ const OrganizationDetails = () => {
               Apply as Player
             </button>
             <button
-              className={`px-6 py-3 rounded-lg bg-white text-${org.themeColor}-600 font-medium hover:bg-gray-100 transition`}
+              className={`px-6 py-3 rounded-lg bg-white ${theme.text} font-medium hover:bg-gray-100 transition`}
             >
               Partner with Us
             </button>

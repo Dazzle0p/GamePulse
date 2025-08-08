@@ -13,10 +13,14 @@ import {
   Video,
   HelpCircle,
   ArrowRight,
+  Search,
 } from "react-feather";
+
+import { Link } from "react-router-dom";
 
 const ServicesSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
   const [hoveredService, setHoveredService] = useState(null);
 
   const categories = [
@@ -35,54 +39,36 @@ const ServicesSection = () => {
       icon: <Trophy className="w-8 h-8" />,
       category: "orgs",
       color: "from-red-600 to-orange-500",
+      path: "/organizations",
     },
+
     {
       id: 2,
+      title: "Event & Tournament's",
+      description:
+        "Scroll through India's biggest and most exciting gaming events, all in one place.",
+      icon: <Calendar className="w-8 h-8" />,
+      category: "events",
+      color: "from-blue-600 to-cyan-500",
+      path: "/events",
+    },
+    {
+      id: 3,
+      title: "Gaming Personality",
+      description:
+        "Connect with gaming influencers, streamers, Casters and many more",
+      icon: <Video className="w-8 h-8" />,
+      category: "creators",
+      color: "from-yellow-600 to-amber-500",
+      path: "/creators",
+    },
+    {
+      id: 4,
       title: "Tournament Organizers",
       description: "Discover tournament hosts and event managers",
       icon: <Calendar className="w-8 h-8" />,
       category: "events",
       color: "from-purple-600 to-indigo-500",
-    },
-    {
-      id: 3,
-      title: "Content Creators",
-      description: "Connect with gaming influencers and streamers",
-      icon: <Video className="w-8 h-8" />,
-      category: "creators",
-      color: "from-blue-600 to-cyan-500",
-    },
-    {
-      id: 4,
-      title: "Brand Partnerships",
-      description: "Sponsorship opportunities for businesses",
-      icon: <Briefcase className="w-8 h-8" />,
-      category: "business",
-      color: "from-green-600 to-emerald-500",
-    },
-    {
-      id: 5,
-      title: "Event Management",
-      description: "Tools to create and manage gaming events",
-      icon: <Calendar className="w-8 h-8" />,
-      category: "events",
-      color: "from-yellow-600 to-amber-500",
-    },
-    {
-      id: 6,
-      title: "Analytics Dashboard",
-      description: "Performance metrics and audience insights",
-      icon: <BarChart2 className="w-8 h-8" />,
-      category: "business",
-      color: "from-pink-600 to-rose-500",
-    },
-    {
-      id: 7,
-      title: "Reputation System",
-      description: "Verified ratings for all platform participants",
-      icon: <Star className="w-8 h-8" />,
-      category: "orgs",
-      color: "from-indigo-600 to-purple-500",
     },
     {
       id: 8,
@@ -91,6 +77,7 @@ const ServicesSection = () => {
       icon: <Users className="w-8 h-8" />,
       category: "creators",
       color: "from-cyan-600 to-sky-500",
+      path: "/news",
     },
     {
       id: 9,
@@ -118,23 +105,28 @@ const ServicesSection = () => {
     },
     {
       id: 12,
-      title: "Safety & Compliance",
-      description: "Tools to ensure safe gaming environments",
+      title: "Career & Jobs",
+      description: "Level Up Your Career in Esports & Gaming.",
       icon: <Shield className="w-8 h-8" />,
-      category: "all",
+      category: "Career",
       color: "from-rose-600 to-pink-500",
     },
   ];
 
-  const filteredServices =
-    activeCategory === "all"
-      ? services
-      : services.filter((service) => service.category === activeCategory);
+  // Filter services based on category and search term
+  const filteredServices = services.filter((service) => {
+    const matchesCategory =
+      activeCategory === "all" || service.category === activeCategory;
+    const matchesSearch =
+      service.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      service.description.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <section className="py-16 px-4 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent">
             What Are You Looking For?
           </h2>
@@ -144,69 +136,101 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all ${
-                activeCategory === category.id
-                  ? "bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-lg"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
+        {/* Search and Filter Section */}
+        <div className="flex flex-col md:flex-row gap-6 items-center justify-between mb-10">
+          {/* Search Bar */}
+          <div className="w-full md:w-1/2 relative">
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <Search className="w-5 h-5" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search services..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            />
+          </div>
+
+          {/* Category Filter */}
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                  activeCategory === category.id
+                    ? "bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-lg"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredServices.map((service) => (
-            <div
-              key={service.id}
-              className={`relative bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 transition-all duration-300 hover:shadow-xl ${
-                hoveredService === service.id
-                  ? "border-orange-500 scale-[1.02]"
-                  : ""
-              }`}
-              onMouseEnter={() => setHoveredService(service.id)}
-              onMouseLeave={() => setHoveredService(null)}
-            >
-              {/* Gradient accent */}
+        {filteredServices.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredServices.map((service) => (
               <div
-                className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.color}`}
-              ></div>
+                key={service.id}
+                className={`relative bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 transition-all duration-300 hover:shadow-xl ${
+                  hoveredService === service.id
+                    ? "border-orange-500 scale-[1.02]"
+                    : ""
+                }`}
+                onMouseEnter={() => setHoveredService(service.id)}
+                onMouseLeave={() => setHoveredService(null)}
+              >
+                {/* Gradient accent */}
+                <div
+                  className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.color}`}
+                ></div>
 
-              <div className="p-6">
-                <div className="flex items-start mb-4">
-                  <div
-                    className={`p-3 rounded-xl bg-gradient-to-br ${service.color} text-white mr-4`}
-                  >
-                    {service.icon}
+                <div className="p-6">
+                  <div className="flex items-start mb-4">
+                    <div
+                      className={`p-3 rounded-xl bg-gradient-to-br ${service.color} text-white mr-4`}
+                    >
+                      {service.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mt-2">
+                      {service.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold text-white mt-2">
-                    {service.title}
-                  </h3>
+
+                  <p className="text-gray-400 mb-6">{service.description}</p>
+
+                  <Link to={service.path}>
+                    <button className="flex items-center text-orange-400 font-medium group">
+                      <span>Explore Service</span>
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </Link>
                 </div>
 
-                <p className="text-gray-400 mb-6">{service.description}</p>
-
-                <button className="flex items-center text-orange-400 font-medium group">
-                  <span>Explore Service</span>
-                  <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                </button>
+                {/* Hover effect */}
+                {hoveredService === service.id && (
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent pointer-events-none"></div>
+                )}
               </div>
-
-              {/* Hover effect */}
-              {hoveredService === service.id && (
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent pointer-events-none"></div>
-              )}
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div className="inline-block p-4 mb-4 rounded-full bg-gray-800">
+              <Search className="w-12 h-12 text-orange-500" />
             </div>
-          ))}
-        </div>
-
+            <h3 className="text-2xl font-bold text-white mb-2">
+              No Services Found
+            </h3>
+            <p className="text-gray-400">
+              Try adjusting your search or filter criteria
+            </p>
+          </div>
+        )}
         {/* Stats Banner */}
         <div className="mt-16 bg-gradient-to-r from-red-900/30 to-orange-900/30 border border-orange-500/20 rounded-2xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

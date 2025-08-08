@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { Trophy, Users, Calendar, Newspaper, Menu, X } from "lucide-react";
+import {
+  HomeIcon,
+  Trophy,
+  Users,
+  Newspaper,
+  Menu,
+  X,
+  ShoppingBag,
+} from "lucide-react";
 import { useState } from "react";
 
 const Header = () => {
@@ -20,23 +28,35 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink to="/organizations" icon={Users}>
-            Organizations
+          <NavLink to="/" icon={HomeIcon}>
+            Home
           </NavLink>
-          <NavLink to="/organizers" icon={Calendar}>
-            Tournament Organizers
+          <NavLink to="/esports" icon={Trophy}>
+            Esports
           </NavLink>
-          <NavLink to="/creators" icon={Trophy}>
-            Creators
+          <NavLink to="/creators" icon={Users}>
+            E-Talents
           </NavLink>
           <NavLink to="/news" icon={Newspaper}>
-            News
+            Community
+          </NavLink>
+          <NavLink
+            to="/shop"
+            target="_blank"
+            rel="noopener noreferrer"
+            icon={ShoppingBag}
+          >
+            Shop
           </NavLink>
         </nav>
 
         <div className="flex items-center space-x-4">
-          <Button variant="secondary">Login</Button>
-          <Button variant="primary">Join IGC</Button>
+          <Link to="/login">
+            <Button variant="secondary">Login</Button>
+          </Link>
+          <Link to="/signup">
+            <Button variant="primary">Join IGC</Button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -59,9 +79,10 @@ const Header = () => {
 };
 
 // Extracted components remain the same as previous example
-const NavLink = ({ to, icon: Icon, children }) => (
+const NavLink = ({ to, icon: Icon, children, ...rest }) => (
   <Link
     to={to}
+    {...rest} // ✅ passes target, rel, etc.
     className="text-gpgray hover:text-white transition-colors group"
   >
     <div className="flex items-center space-x-2">
@@ -95,17 +116,26 @@ const Button = ({ variant = "primary", children, fullWidth = false }) => {
 const MobileMenu = ({ onClose }) => (
   <div className="md:hidden border-t border-gporange-300 bg-gpblack shadow-gpglow">
     <nav className="container py-4 px-4 space-y-4">
-      <MobileLink to="/organizations" icon={Users} onClose={onClose}>
-        Organizations
+      <MobileLink to="/organizations" icon={HomeIcon} onClose={onClose}>
+        Home
       </MobileLink>
-      <MobileLink to="/organizers" icon={Calendar} onClose={onClose}>
-        Tournament Organizers
+      <MobileLink to="/esports" icon={Trophy} onClose={onClose}>
+        Esports
       </MobileLink>
-      <MobileLink to="/creators" icon={Trophy} onClose={onClose}>
-        Creators
+      <MobileLink to="/creators" icon={Users} onClose={onClose}>
+        E-talents
       </MobileLink>
       <MobileLink to="/news" icon={Newspaper} onClose={onClose}>
-        News
+        Community
+      </MobileLink>
+      <MobileLink
+        to="/shop"
+        target="_blank"
+        rel="noopener noreferrer"
+        icon={ShoppingBag}
+        onClose={onClose}
+      >
+        Shop
       </MobileLink>
       <div className="space-y-3 pt-4 border-t border-gpdark">
         <Link to="/login">
@@ -123,9 +153,10 @@ const MobileMenu = ({ onClose }) => (
   </div>
 );
 
-const MobileLink = ({ to, icon: Icon, children, onClose }) => (
+const MobileLink = ({ to, icon: Icon, children, onClose, ...rest }) => (
   <Link
     to={to}
+    {...rest} // ✅ passes target, rel, etc.
     className="block py-2 px-4 text-gpgray hover:text-white hover:bg-gradient-to-r hover:from-gpred-300/20 hover:to-gporange-300/20 rounded-md transition-all"
     onClick={onClose}
   >
