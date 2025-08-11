@@ -62,6 +62,18 @@ const LoginPage = () => {
             </p>
           </div>
 
+          <Link
+            to="/"
+            className={`w-75 py-3.5 font-medium rounded-xl flex items-center justify-around gap-2 ${
+              isLoading
+                ? "bg-gray-700 cursor-not-allowed"
+                : "bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 shadow-lg hover:shadow-xl"
+            } transition-all duration-300`}
+          >
+            Continue Without Login
+            <LogIn className="w-5 h-5" />
+          </Link>
+
           <div className="flex space-x-4">
             {Array.from({ length: 3 }).map((_, i) => (
               <div key={i} className="flex items-center">

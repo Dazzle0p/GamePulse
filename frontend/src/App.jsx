@@ -25,16 +25,18 @@ const App = () => {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="signup" element={<SignUpPage />} />
           <Route path="aboutUs" element={<KnowAboutUs />} />
           <Route path="Gaming-Esports" element={<KnowGamingEsports />} />
 
           <Route path="esports" element={<EsportsHomepage />} />
           <Route path="esports/:id" element={<GameDetailPage />} />
+
           <Route path="news" element={<NewsPage />} />
+
           <Route path="creators" element={<Creators />} />
           <Route path="creators/:id" element={<InfluencerProfile />} />
 
@@ -43,6 +45,7 @@ const App = () => {
 
           <Route path="organizers" element={<TournamentOrganizers />} />
           <Route path="/media-promotion" element={<MediaPromotion />} />
+
           <Route path="/learn" element={<LearningResources />} />
           <Route path="/careers" element={<Careers />} />
         </Route>

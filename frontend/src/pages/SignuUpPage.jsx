@@ -8,9 +8,11 @@ import {
   Smartphone,
   AtSign,
   LogIn,
+  Home,
+  ArrowRight,
   X,
 } from "react-feather";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +38,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-900 text-white">
+    <div className="max-h-screen flex flex-col md:flex-row bg-gray-900 text-white">
       {/* Left Side - Brand Showcase */}
       <div className="md:w-1/2 relative hidden md:flex">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 to-orange-900/80">
@@ -60,6 +62,18 @@ const SignUpPage = () => {
               your team, and level up your gaming career.
             </p>
           </div>
+
+          <Link
+            to="/"
+            className={`w-75 py-3.5 font-medium rounded-xl flex items-center justify-around gap-2 ${
+              isLoading
+                ? "bg-gray-700 cursor-not-allowed"
+                : "bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 shadow-lg hover:shadow-xl"
+            } transition-all duration-300`}
+          >
+            Continue Without Sign Up
+            <LogIn className="w-5 h-5" />
+          </Link>
 
           <div className="flex space-x-4">
             {Array.from({ length: 3 }).map((_, i) => (
