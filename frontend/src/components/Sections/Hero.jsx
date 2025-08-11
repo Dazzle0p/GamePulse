@@ -22,12 +22,15 @@ const Hero = () => {
               className="px-8 py-4 bg-gradient-to-r from-gpred-500 to-gporange-500 text-white rounded-lg flex items-center justify-center gap-2 hover:from-gpred-600 hover:to-gporange-600 transition-all shadow-gpglow-md hover:shadow-gpglow-lg"
             >
               <Trophy className="h-5 w-5" />
-              <span className="font-medium">Know About Us</span>
+              <span className="font-medium">About Us</span>
             </Link>
-            <button className="px-8 py-4 border-2 border-gporange-300 rounded-lg text-white flex items-center justify-center gap-2 hover:bg-gporange-300/10 transition-all">
+            <Link
+              to="/Gaming-Esports"
+              className="px-8 py-4 border-2 border-gporange-300 rounded-lg text-white flex items-center justify-center gap-2 hover:bg-gporange-300/10 transition-all"
+            >
               <Play className="h-5 w-5" />
-              <span className="font-medium">Watch Demo</span>
-            </button>
+              <span className="font-medium">Know Gaming & Esports</span>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">

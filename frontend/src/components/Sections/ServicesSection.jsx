@@ -50,7 +50,7 @@ const ServicesSection = () => {
       icon: <Calendar className="w-8 h-8" />,
       category: "events",
       color: "from-blue-600 to-cyan-500",
-      path: "/events",
+      path: "/esports",
     },
     {
       id: 3,
@@ -69,6 +69,7 @@ const ServicesSection = () => {
       icon: <Calendar className="w-8 h-8" />,
       category: "events",
       color: "from-purple-600 to-indigo-500",
+      path: "/organizers",
     },
     {
       id: 8,
@@ -86,6 +87,7 @@ const ServicesSection = () => {
       icon: <ShoppingCart className="w-8 h-8" />,
       category: "business",
       color: "from-orange-600 to-amber-500",
+      path: "/shop",
     },
     {
       id: 10,
@@ -94,6 +96,7 @@ const ServicesSection = () => {
       icon: <Megaphone className="w-8 h-8" />,
       category: "creators",
       color: "from-teal-600 to-green-500",
+      path: "/media-promotion",
     },
     {
       id: 11,
@@ -102,6 +105,7 @@ const ServicesSection = () => {
       icon: <BookOpen className="w-8 h-8" />,
       category: "orgs",
       color: "from-violet-600 to-purple-500",
+      path: "/learn",
     },
     {
       id: 12,
@@ -110,6 +114,7 @@ const ServicesSection = () => {
       icon: <Shield className="w-8 h-8" />,
       category: "Career",
       color: "from-rose-600 to-pink-500",
+      path: "/careers",
     },
   ];
 
