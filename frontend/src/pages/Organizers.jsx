@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-const TournamentOrganizers = () => {
+const Organizers = () => {
   const [organizers, setOrganizers] = useState([
     {
       id: "esl",
@@ -292,4 +292,4 @@ const TournamentOrganizers = () => {
   );
 };
 
-export default TournamentOrganizers;
+export default Organizers;

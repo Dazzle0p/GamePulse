@@ -34,7 +34,7 @@ const ServicesSection = () => {
   const services = [
     {
       id: 1,
-      title: "Esports Organizations",
+      title: "Organizations",
       description: "Find and connect with professional gaming organizations",
       icon: <Trophy className="w-8 h-8" />,
       category: "orgs",
@@ -44,7 +44,7 @@ const ServicesSection = () => {
 
     {
       id: 2,
-      title: "Event & Tournament's",
+      title: "Event & Tournament",
       description:
         "Scroll through India's biggest and most exciting gaming events, all in one place.",
       icon: <Calendar className="w-8 h-8" />,
@@ -54,7 +54,7 @@ const ServicesSection = () => {
     },
     {
       id: 3,
-      title: "Gaming Personality",
+      title: "E-Talent's",
       description:
         "Connect with gaming influencers, streamers, Casters and many more",
       icon: <Video className="w-8 h-8" />,
@@ -64,7 +64,7 @@ const ServicesSection = () => {
     },
     {
       id: 4,
-      title: "Tournament Organizers",
+      title: "Organizers",
       description: "Discover tournament hosts and event managers",
       icon: <Calendar className="w-8 h-8" />,
       category: "events",
@@ -80,23 +80,24 @@ const ServicesSection = () => {
       color: "from-cyan-600 to-sky-500",
       path: "/news",
     },
+
     {
       id: 9,
-      title: "Marketplace",
-      description: "Buy, sell, and trade gaming merchandise",
-      icon: <ShoppingCart className="w-8 h-8" />,
-      category: "business",
-      color: "from-orange-600 to-amber-500",
-      path: "/shop",
-    },
-    {
-      id: 10,
       title: "Media & Promotion",
       description: "Amplify your reach with our marketing tools",
       icon: <Megaphone className="w-8 h-8" />,
       category: "creators",
       color: "from-teal-600 to-green-500",
       path: "/media-promotion",
+    },
+    {
+      id: 10,
+      title: "Marketplace",
+      description: "Buy, sell, and trade gaming merchandise",
+      icon: <ShoppingCart className="w-8 h-8" />,
+      category: "business",
+      color: "from-orange-600 to-amber-500",
+      path: "/shop",
     },
     {
       id: 11,
@@ -263,7 +264,7 @@ const ServicesSection = () => {
             Our support team is ready to help you find the perfect solution for
             your gaming needs
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* <div className="flex flex-wrap justify-center gap-4">
             <button className="px-8 py-3.5 bg-gradient-to-r from-red-600 to-orange-500 text-white rounded-xl font-medium flex items-center gap-2 hover:from-red-700 hover:to-orange-600 transition-all">
               <HelpCircle className="w-5 h-5" />
               Contact Support
@@ -271,7 +272,7 @@ const ServicesSection = () => {
             <button className="px-8 py-3.5 border border-orange-500 text-orange-400 rounded-xl font-medium hover:bg-orange-500/10 transition-colors">
               View All Services
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

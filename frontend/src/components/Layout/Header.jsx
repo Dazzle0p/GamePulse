@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   HomeIcon,
+  ServerIcon,
   Trophy,
   Users,
   Newspaper,
@@ -31,6 +32,9 @@ const Header = () => {
           <NavLink to="/" icon={HomeIcon}>
             Home
           </NavLink>
+          <NavLink to="/services" icon={ServerIcon}>
+            Services
+          </NavLink>
           <NavLink to="/esports" icon={Trophy}>
             Esports
           </NavLink>
@@ -40,14 +44,14 @@ const Header = () => {
           <NavLink to="/news" icon={Newspaper}>
             Community
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/shop"
             target="_blank"
             rel="noopener noreferrer"
             icon={ShoppingBag}
           >
             Shop
-          </NavLink>
+          </NavLink> */}
         </nav>
 
         <div className="flex items-center space-x-4">

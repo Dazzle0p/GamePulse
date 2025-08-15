@@ -8,18 +8,19 @@ import Organizations from "./pages/Organizations";
 import OrganizationDetails from "./components/subPages/OrganizationDetails";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignuUpPage";
-import EsportsHomepage from "./pages/EsportsHomepage";
+import EsportsHomepage from "./pages/EsportsHome";
 import GameDetailPage from "./pages/GameDetailPage";
 import InfluencerProfile from "./components/subPages/InfluencerProfile";
 import ShopPage from "./pages/ShopPage";
 import KnowAboutUs from "./components/subPages/KnowAboutUs";
 import KnowGamingEsports from "./components/subPages/KnowGamingEsports";
-import AdminTournamentOrganizersPage from "../adminPages/AdminTournamentOrganizersPage ";
-import TournamentOrganizers from "./pages/TournamentOrganizers";
+import AdminOrganizers from "./adminPages/AdminOrganizers ";
+import Organizers from "./pages/Organizers";
 import ScrollToTop from "./components/Compo/ScrollToTop";
 import MediaPromotion from "./pages/MediaPromotion";
 import Careers from "./pages/Careers";
 import LearningResources from "./pages/LearningResources";
+import ServicesSection from "./components/Sections/ServicesSection";
 const App = () => {
   return (
     <BrowserRouter>
@@ -29,6 +30,9 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+
+          <Route path="services" element={<ServicesSection />} />
+
           <Route path="aboutUs" element={<KnowAboutUs />} />
           <Route path="Gaming-Esports" element={<KnowGamingEsports />} />
 
@@ -43,7 +47,7 @@ const App = () => {
           <Route path="organizations" element={<Organizations />} />
           <Route path="organizations/:id" element={<OrganizationDetails />} />
 
-          <Route path="organizers" element={<TournamentOrganizers />} />
+          <Route path="organizers" element={<Organizers />} />
           <Route path="/media-promotion" element={<MediaPromotion />} />
 
           <Route path="/learn" element={<LearningResources />} />
@@ -51,10 +55,7 @@ const App = () => {
         </Route>
 
         <Route path="/admin/">
-          <Route
-            path="turnament-organizer"
-            element={<AdminTournamentOrganizersPage />}
-          />
+          <Route path="turnament-organizer" element={<AdminOrganizers />} />
         </Route>
         <Route path="/shop" element={<ShopPage />} />
       </Routes>

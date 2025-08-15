@@ -1,4 +1,6 @@
-const UpcomingTournament = () => {
+import { Calendar, ArrowRight } from "react-feather";
+import { Link } from "react-router-dom";
+const FeaturedTournament = () => {
   const upcomingEvents = [
     {
       name: "Skyesports Championship",
@@ -52,4 +54,4 @@ const UpcomingTournament = () => {
   );
 };
 
-export default UpcomingTournament;
+export default FeaturedTournament;

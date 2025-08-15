@@ -25,7 +25,7 @@ import {
   Instagram,
 } from "lucide-react";
 
-const AdminTournamentOrganizersPage = () => {
+const AdminOrganizers = () => {
   const [activeTab, setActiveTab] = useState("upcoming");
   const [selectedTournament, setSelectedTournament] = useState(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -729,4 +729,4 @@ const AdminTournamentOrganizersPage = () => {
   );
 };
 
-export default AdminTournamentOrganizersPage;
+export default AdminOrganizers;

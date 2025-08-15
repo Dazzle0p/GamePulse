@@ -1,3 +1,4 @@
+import Organizers from "./Organizers";
 import React, { useState } from "react";
 import {
   Search,
@@ -10,6 +11,7 @@ import {
   TrendingUp,
   ArrowRight,
   HelpCircle,
+  Plus,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -260,7 +262,7 @@ const EsportsHomepage = () => {
         )}
 
         {/* Featured Tournament */}
-        <div className="mt-16 bg-gradient-to-r from-red-900/30 to-orange-900/30 border border-orange-500/20 rounded-2xl p-8">
+        <div className="mt-16 bg-gradient-to-r from-red-900/30 to-orange-900/30 border border-orange-500/20 rounded-2xl p-8 mb-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -302,10 +304,11 @@ const EsportsHomepage = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <button className="px-8 py-3.5 bg-gradient-to-r from-red-600 to-orange-500 text-white rounded-xl font-medium flex items-center gap-2 hover:from-red-700 hover:to-orange-600 transition-all">
               <HelpCircle className="w-5 h-5" />
-              Contact Our Team
+              Connect To Organizers
             </button>
-            <button className="px-8 py-3.5 border border-orange-500 text-orange-400 rounded-xl font-medium hover:bg-orange-500/10 transition-colors">
-              View All Tournaments
+            <button className="px-8 py-3.5 border border-orange-500 text-orange-400 rounded-xl font-medium flex items-center gap-2 hover:bg-orange-500/10 transition-colors">
+              <Plus className="w-5 h-5" />
+              Register as Organizer
             </button>
           </div>
         </div>
