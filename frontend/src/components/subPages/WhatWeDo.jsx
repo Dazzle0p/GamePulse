@@ -13,6 +13,7 @@ import {
   Calendar,
   MessageSquare,
 } from "lucide-react";
+import { CoreServices } from "../Sections/CoreServices";
 
 export default function WhatWeDo() {
   const stats = [
@@ -89,16 +90,11 @@ export default function WhatWeDo() {
     },
     {
       icon: <BarChart2 className="w-8 h-8 text-orange-500" />,
-      title: "Performance Analytics",
+      title: "Organization Hubs",
       description:
-        "Track your gaming stats, audience growth, and monetization metrics",
+        "Dedicated pages for esports organizations with rosters, achievements, and sponsor details.",
     },
-    {
-      icon: <Shield className="w-8 h-8 text-orange-500" />,
-      title: "Safe Environment",
-      description:
-        "Robust moderation tools and anti-cheat systems for fair play",
-    },
+
     {
       icon: <Megaphone className="w-8 h-8 text-orange-500" />,
       title: "Brand Partnerships",
@@ -116,10 +112,16 @@ export default function WhatWeDo() {
       description:
         "Direct API connections with popular games for seamless experiences",
     },
+    {
+      icon: <Shield className="w-8 h-8 text-orange-500" />,
+      title: "Safe Environment",
+      description:
+        "Robust moderation tools and anti-cheat systems for fair play",
+    },
   ];
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-black text-white min-h-screen">
+    <div className=" text-white min-h-screen bg-gpblack">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000')] bg-cover bg-center opacity-20 z-0"></div>
@@ -158,51 +160,17 @@ export default function WhatWeDo() {
       </section>
 
       {/* Services Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="max-w-7xl mx-auto px-6 py-16 bg-gpblack">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our Core <span className="text-orange-500">Services</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto text-2xl">
             We provide comprehensive solutions for every aspect of the gaming
             ecosystem
           </p>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`bg-gradient-to-br ${service.color}/10 to-transparent rounded-2xl overflow-hidden border border-gray-800 hover:border-orange-500 transition-all duration-300 group`}
-            >
-              <div className={`h-2 bg-gradient-to-r ${service.color}`}></div>
-              <div className="p-8">
-                <div className="mb-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    {service.icon}
-                  </div>
-                </div>
-
-                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-300 mb-6">{service.description}</p>
-
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-orange-500 mt-1">•</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button className="flex items-center gap-2 text-orange-400 font-medium group">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        <CoreServices />
       </section>
 
       {/* Mission Statement */}
@@ -220,15 +188,6 @@ export default function WhatWeDo() {
             platform where competitive spirit meets creativity, and where every
             gamer can find their place, voice, and opportunities."
           </blockquote>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-6 py-3 bg-gradient-to-r from-red-600 to-orange-500 rounded-lg font-medium flex items-center gap-2 hover:from-red-700 hover:to-orange-600 transition-all">
-              Join Our Community <ArrowRight className="w-4 h-4" />
-            </button>
-            <button className="px-6 py-3 border border-orange-500 text-orange-400 rounded-lg hover:bg-orange-500/10">
-              Partner With Us
-            </button>
-          </div>
         </div>
       </section>
 

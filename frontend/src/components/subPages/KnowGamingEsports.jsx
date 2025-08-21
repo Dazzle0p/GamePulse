@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Gamepad,
   Trophy,
@@ -682,9 +683,12 @@ export default function KnowGamingEsports() {
             built through dedication and gradual growth.
           </p>
           <div className="flex justify-center">
-            <div className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-orange-500 rounded-lg font-medium">
+            <Link
+              to={"/learn"}
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-orange-500 rounded-lg font-medium"
+            >
               Explore Learning Resources <ChevronRight className="w-4 h-4" />
-            </div>
+            </Link>
           </div>
         </div>
       </section>

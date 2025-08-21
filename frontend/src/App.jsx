@@ -21,6 +21,7 @@ import MediaPromotion from "./pages/MediaPromotion";
 import Careers from "./pages/Careers";
 import LearningResources from "./pages/LearningResources";
 import ServicesSection from "./components/Sections/ServicesSection";
+import GamingTalentPage from "./pages/GamingTalentPage";
 const App = () => {
   return (
     <BrowserRouter>
@@ -41,6 +42,7 @@ const App = () => {
 
           <Route path="news" element={<NewsPage />} />
 
+          <Route path="etalent" element={<GamingTalentPage />} />
           <Route path="creators" element={<Creators />} />
           <Route path="creators/:id" element={<InfluencerProfile />} />
 

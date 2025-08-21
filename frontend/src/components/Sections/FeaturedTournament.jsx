@@ -13,10 +13,10 @@ const FeaturedTournament = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-gpblack">
+    <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto space-y-8 text-center">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold">Upcoming Tournaments</h2>
+          <h2 className="text-3xl font-bold">Featured Tournaments</h2>
           <p className="text-gpgray">
             Don't miss these exciting upcoming esports events
           </p>
@@ -44,7 +44,7 @@ const FeaturedTournament = () => {
           ))}
         </div>
 
-        <Link to="/organizers">
+        <Link to="/esports">
           <button className="mt-8 px-6 py-3 border border-gporange-300 rounded-lg flex items-center gap-2 mx-auto hover:bg-gporange-300/10 transition-colors">
             View All Events <ArrowRight className="w-4 h-4" />
           </button>

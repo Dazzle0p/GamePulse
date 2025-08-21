@@ -38,7 +38,7 @@ const Header = () => {
           <NavLink to="/esports" icon={Trophy}>
             Esports
           </NavLink>
-          <NavLink to="/creators" icon={Users}>
+          <NavLink to="/etalent" icon={Users}>
             E-Talents
           </NavLink>
           <NavLink to="/news" icon={Newspaper}>

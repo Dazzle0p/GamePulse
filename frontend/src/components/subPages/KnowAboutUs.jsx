@@ -1,4 +1,5 @@
 import React from "react";
+import { CoreServices } from "../Sections/CoreServices";
 import {
   Trophy,
   Users,
@@ -230,6 +231,20 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Our Core <span className="text-orange-500">Services</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-2xl">
+            We provide comprehensive solutions for every aspect of the gaming
+            ecosystem
+          </p>
+        </div>
+        <CoreServices />
       </section>
 
       {/* Core Values */}

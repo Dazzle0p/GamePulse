@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import s8ulbg from "../../assets/s8ulBg.webp";
+import s8ullogo from "../../assets/s8ullogo.png";
 import {
   Youtube,
   Instagram,
@@ -17,7 +19,9 @@ import {
   Mail,
   Phone,
   ExternalLink,
+  LinkedinIcon,
 } from "lucide-react";
+import LogoCarousel from "../Ui/LogoCarousel";
 
 const organizationData = {
   name: "NEXUS GAMING",
@@ -135,15 +139,16 @@ const organizationData = {
       },
     },
     {
-      _id: "2",
-      name: "ContentKing",
-      profileImage: "https://via.placeholder.com/150x150/00D9FF/000?text=CK",
-      primaryPlatform: "YouTube",
-      followerCount: 1200000,
-      contentType: "Content Creator",
+      _id: "1",
+      name: "StreamerPro",
+      profileImage: "https://via.placeholder.com/150x150/00D9FF/000?text=SP",
+      primaryPlatform: "Twitch",
+      followerCount: 850000,
+      contentType: "Gaming Streamer",
       socialLinks: {
-        youtube: "https://youtube.com/contentking",
-        instagram: "https://instagram.com/contentking",
+        twitch: "https://twitch.tv/streamerpro",
+        youtube: "https://youtube.com/streamerpro",
+        twitter: "https://twitter.com/streamerpro",
       },
     },
     {
@@ -156,6 +161,18 @@ const organizationData = {
       socialLinks: {
         instagram: "https://instagram.com/clipmaster",
         twitter: "https://twitter.com/clipmaster",
+      },
+    },
+    {
+      _id: "4",
+      name: "ContentKing",
+      profileImage: "https://via.placeholder.com/150x150/00D9FF/000?text=CK",
+      primaryPlatform: "YouTube",
+      followerCount: 1200000,
+      contentType: "Content Creator",
+      socialLinks: {
+        youtube: "https://youtube.com/contentking",
+        instagram: "https://instagram.com/contentking",
       },
     },
   ],
@@ -385,9 +402,7 @@ const OrganizationDetails = () => {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `url(${
-                organizationData.bannerUrl || heroBanner
-              })`,
+              backgroundImage: `url(${s8ulbg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               opacity: 0.3,
@@ -399,9 +414,9 @@ const OrganizationDetails = () => {
           <div className="animate-fade-in">
             <div className="mb-8 flex justify-center">
               <img
-                src={organizationData.logoUrl || orgLogo}
+                src={s8ullogo || orgLogo}
                 alt={`${organizationData.name} logo`}
-                className="w-32 h-32 object-contain animate-float glow"
+                className="w-50 h-50 object-contain animate-float glow"
               />
             </div>
 
@@ -438,6 +453,164 @@ const OrganizationDetails = () => {
           className="absolute top-1/2 left-10 w-1 h-1 bg-gpred-500 rounded-full animate-glow-pulse opacity-80"
           style={{ animationDelay: "2s" }}
         />
+      </section>
+      {/* Founders Section */}
+      <section className="py-20 bg-gpblack">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gpred-500 to-gporange-500 bg-clip-text text-transparent">
+              Leadership
+            </h2>
+            <p className="text-xl text-gpgray">
+              The visionaries behind our success
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Founder */}
+            <div className="bg-gpdark border border-gpgray/20 rounded-2xl p-8 text-center group hover:border-gpred-500 transition-colors duration-300">
+              <div className="relative mb-6">
+                <div className="w-32 h-32 bg-gradient-to-br from-gpred-500 to-gporange-500 rounded-full mx-auto flex items-center justify-center border-4 border-gpred-500/20 group-hover:border-gpred-500 transition-colors">
+                  <span className="text-white text-4xl font-bold">AL</span>
+                </div>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-10 bg-gpred-500 rounded-full flex items-center justify-center border-2 border-gpblack">
+                  <Award className="w-5 h-5 text-white" />
+                </div>
+              </div>
+
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-gpred-500 transition-colors">
+                Alex "Vision" Rivera
+              </h3>
+              <p className="text-lg text-gpred-500 font-semibold mb-4">
+                Founder & CEO
+              </p>
+              <p className="text-gpgray mb-6">
+                Former professional esports athlete with over a decade of
+                competitive experience. Founded Nexus Gaming in 2018 with a
+                vision to create the most player-focused organization.
+              </p>
+
+              <div className="flex justify-center space-x-4">
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-gpblack hover:bg-gpred-500 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Twitter className="w-5 h-5 text-gpgray hover:text-white" />
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-gpblack hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Instagram className="w-5 h-5 text-gpgray hover:text-white" />
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-gpblack hover:bg-blue-400 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <LinkedinIcon className="w-5 h-5 text-gpgray hover:text-white" />
+                </a>
+              </div>
+            </div>
+
+            {/* Co-Founders */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-white mb-6 text-center md:text-left">
+                Co-Founders
+              </h3>
+
+              {/* Co-Founder 1 */}
+              <div className="bg-gpdark border border-gpgray/20 rounded-xl p-6 flex items-center space-x-4 group hover:border-gpred-500 transition-colors duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-gporange-500 to-gpred-500 rounded-full flex items-center justify-center border-2 border-gpred-500/20 group-hover:border-gpred-500 transition-colors">
+                  <span className="text-white text-lg font-bold">MJ</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-white group-hover:text-gpred-500 transition-colors">
+                    Maria "Strategist" Johnson
+                  </h4>
+                  <p className="text-gpred-500 text-sm">
+                    COO & Business Development
+                  </p>
+                  <p className="text-gpgray text-sm mt-1">
+                    Former marketing executive with expertise in brand
+                    partnerships and team management.
+                  </p>
+                </div>
+              </div>
+
+              {/* Co-Founder 2 */}
+              <div className="bg-gpdark border border-gpgray/20 rounded-xl p-6 flex items-center space-x-4 group hover:border-gpred-500 transition-colors duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-gporange-500 to-gpred-500 rounded-full flex items-center justify-center border-2 border-gpred-500/20 group-hover:border-gpred-500 transition-colors">
+                  <span className="text-white text-lg font-bold">DK</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-white group-hover:text-gpred-500 transition-colors">
+                    David "TechGuru" Kim
+                  </h4>
+                  <p className="text-gpred-500 text-sm">CTO & Infrastructure</p>
+                  <p className="text-gpgray text-sm mt-1">
+                    Tech innovator specializing in streaming infrastructure and
+                    content creation tools.
+                  </p>
+                </div>
+              </div>
+
+              {/* Co-Founder 3 */}
+              <div className="bg-gpdark border border-gpgray/20 rounded-xl p-6 flex items-center space-x-4 group hover:border-gpred-500 transition-colors duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-gporange-500 to-gpred-500 rounded-full flex items-center justify-center border-2 border-gpred-500/20 group-hover:border-gpred-500 transition-colors">
+                  <span className="text-white text-lg font-bold">SL</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-white group-hover:text-gpred-500 transition-colors">
+                    Sarah "EagleEye" Lee
+                  </h4>
+                  <p className="text-gpred-500 text-sm">
+                    Talent Scout & Player Development
+                  </p>
+                  <p className="text-gpgray text-sm mt-1">
+                    Former coach with an eye for discovering and nurturing raw
+                    talent into championship players.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Founding Story */}
+          <div className="mt-16 bg-gpdark border border-gpgray/20 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+              Our Founding Story
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-gpgray mb-4">
+                  Nexus Gaming was founded in 2018 by a group of friends who
+                  shared a passion for competitive gaming and a vision for how
+                  esports organizations should treat their players and content
+                  creators.
+                </p>
+                <p className="text-gpgray mb-4">
+                  Starting from a small gaming house with just one Valorant
+                  team, we've grown into a multi-game organization with
+                  championship teams across multiple titles and a thriving
+                  content creator network.
+                </p>
+              </div>
+              <div>
+                <p className="text-gpgray mb-4">
+                  Our philosophy has always been "players first" - we believe
+                  that when we take care of our talent, they'll perform at their
+                  best and help us build a community that lasts.
+                </p>
+                <p className="text-gpgray">
+                  Today, we're proud to be recognized as one of the most
+                  player-friendly organizations in esports, with multiple
+                  championship titles and a community of over 5 million fans
+                  worldwide.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Social Media Section */}
@@ -489,105 +662,14 @@ const OrganizationDetails = () => {
 
       {/* Sponsors Carousel */}
       {organizationData.sponsors.length > 0 && (
-        <section className="py-20 bg-gpblack">
+        <section className="pt-20 bg-gpblack">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-12 animate-fade-in">
+            <div className="text-center animate-fade-in">
               <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gpred-500 to-gporange-500 bg-clip-text text-transparent">
                 Our Partners
               </h2>
               <p className="text-xl text-gpgray">Trusted by industry leaders</p>
-            </div>
-
-            <div
-              className="relative max-w-6xl mx-auto"
-              onMouseEnter={() => setIsAutoPlaying(false)}
-              onMouseLeave={() => setIsAutoPlaying(true)}
-            >
-              <div className="overflow-hidden rounded-xl">
-                <div
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{
-                    transform: `translateX(-${currentSponsorIndex * 100}%)`,
-                  }}
-                >
-                  {Array.from(
-                    { length: Math.ceil(organizationData.sponsors.length / 4) },
-                    (_, slideIndex) => (
-                      <div key={slideIndex} className="w-full flex-shrink-0">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 p-8">
-                          {organizationData.sponsors
-                            .slice(slideIndex * 4, (slideIndex + 1) * 4)
-                            .map((sponsor, index) => (
-                              <div
-                                key={index}
-                                className="flex items-center justify-center p-6 bg-gpdark rounded-lg border border-gpgray/20"
-                              >
-                                {sponsor.website ? (
-                                  <a
-                                    href={sponsor.website}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block w-full h-20 flex items-center justify-center"
-                                  >
-                                    <img
-                                      src={sponsor.logoUrl}
-                                      alt={sponsor.name}
-                                      className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                                    />
-                                  </a>
-                                ) : (
-                                  <div className="w-full h-20 flex items-center justify-center">
-                                    <img
-                                      src={sponsor.logoUrl}
-                                      alt={sponsor.name}
-                                      className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                                    />
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                        </div>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-
-              {Math.ceil(organizationData.sponsors.length / 4) > 1 && (
-                <>
-                  <button
-                    onClick={prevSlide}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-gpdark border border-gpgray/30 rounded-full p-3 hover:bg-gpred-500 hover:text-white transition-all duration-300"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button
-                    onClick={nextSlide}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-gpdark border border-gpgray/30 rounded-full p-3 hover:bg-gpred-500 hover:text-white transition-all duration-300"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
-                </>
-              )}
-
-              {Math.ceil(organizationData.sponsors.length / 4) > 1 && (
-                <div className="flex justify-center mt-6 space-x-2">
-                  {Array.from(
-                    { length: Math.ceil(organizationData.sponsors.length / 4) },
-                    (_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentSponsorIndex(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                          index === currentSponsorIndex
-                            ? "bg-gpred-500"
-                            : "bg-gpgray/30"
-                        }`}
-                      />
-                    )
-                  )}
-                </div>
-              )}
+              <LogoCarousel logos={organizationData.sponsors} />
             </div>
           </div>
         </section>
