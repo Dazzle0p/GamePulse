@@ -464,6 +464,7 @@ const TopEsportsPlayersSection = ({
       team: "GodLike Esports",
       earnings: "$150K",
       achievements: "PMGC 2021 Finalist",
+      mvp: 20,
       tier: "S-Tier",
       region: "India",
       type: "player",

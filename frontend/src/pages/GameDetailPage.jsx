@@ -29,7 +29,7 @@ const gameData = {
         name: "VCT 2024: Masters Madrid",
         date: "Mar 14 - 24, 2024",
         prizePool: "$1,000,000",
-        teams: 12,
+        participatingteams: 12,
         location: "Madrid, Spain",
         status: "Playoffs",
         teams: [

@@ -1,16 +1,44 @@
-require("dotenv").config();
-const express = require("express");
+import dotenv from "dotenv";
+dotenv.config();
+import connectDB from "./config/db.js";
+
+import express from "express";
+import organizationRoutes from "./routes/organizationRoutes.js";
+import { nestedTeamRouter, globalTeamRouter } from "./routes/teamRoutes.js";
+import {
+  nestedCreatorRouter,
+  globalCreatorRouter,
+} from "./routes/creatorRoutes.js";
+
+// import { nestedCreatorRouter, globalCreatorRouter } from './routes/creatorRoutes.js';
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-const youtubeRoutes = require("./routes/youtubeRoutes");
+// --- Connecting Db ---
+connectDB();
 
-app.get("/", (req, res) => {
-  return res.json({ message: "Welcome to GamePulse Server" });
-});
+// --- Middleware ---
+app.use(express.json()); // To parse JSON bodies
 
-app.use("/api/youtube", youtubeRoutes);
+// --- API Routes ---
+app.use("/api/organizations", organizationRoutes);
 
-app.listen(PORT, (req, res) => {
-  console.log(`Server is running on PORT : ${PORT}`);
+// For nested team routes -> /api/organizations/:orgId/teams
+organizationRoutes.use("/:orgId/teams", nestedTeamRouter);
+
+// For global team routes -> /api/teams
+app.use("/api/teams", globalTeamRouter, nestedTeamRouter);
+
+// --- Creator Routes ---
+
+// For nested routes -> /api/organizations/:orgId/creators
+organizationRoutes.use("/:orgId/creators", nestedCreatorRouter);
+
+// For global routes -> /api/creators
+app.use("/api/creators", globalCreatorRouter, nestedCreatorRouter);
+
+// --- Start Server ---
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
