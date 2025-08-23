@@ -1,11 +1,11 @@
 import ServicesSection from "../components/Sections/ServicesSection";
-import Hero from "../components/Sections/Hero";
+import Hero from "../components/Sections/HomeHero";
 import FeaturedTournament from "../components/Sections/FeaturedTournament";
 import WhatWeDo from "../components/subPages/WhatWeDo";
 import FeaturedOrgs from "../components/Sections/FeaturedOrgs";
-import PlatFeatures from "../components/Compo/PlatFeatures";
+import PlatFeatures from "../components/Sections/PlatFeatures";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="mt-0 min-h-screen bg-gpblack  text-gray-100 ">
       <Hero />
@@ -16,4 +16,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

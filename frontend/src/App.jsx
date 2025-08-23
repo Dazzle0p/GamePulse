@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout/Layout";
 import NewsPage from "./pages/NewsPage";
 import Creators from "./pages/Creators";
@@ -8,16 +8,16 @@ import FeaturedOrg from "./organizationPage/AllOrganizations";
 import OrganizationDetails from "./organizationPage/OrganizationDetails";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignuUpPage";
-import EsportsHomepage from "./pages/Esports";
+import EsportsHomepage from "./pages/EsportsHomepage";
 import GameDetailPage from "./pages/GameDetailPage";
 import InfluencerProfile from "./components/subPages/InfluencerProfile";
 import ShopPage from "./pages/ShopPage";
 import KnowAboutUs from "./pages/KnowAboutUs";
 import KnowGamingEsports from "./pages/KnowGamingEsports";
 import Organizers from "./pages/Organizers";
-import ScrollToTop from "./components/Compo/ScrollToTop";
+import ScrollToTop from "./components/Ui/ScrollToTop";
 import MediaPromotion from "./pages/MediaPromotion";
-import Careers from "./pages/Careers";
+import CareerPage from "./pages/CareerPage";
 import LearningResources from "./pages/LearningResources";
 import ServicesSection from "./components/Sections/ServicesSection";
 import GamingTalentPage from "./pages/GamingTalentPage";
@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
 
           <Route path="services" element={<ServicesSection />} />
 
@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/media-promotion" element={<MediaPromotion />} />
 
           <Route path="/learn" element={<LearningResources />} />
-          <Route path="/careers" element={<Careers />} />
+          <Route path="/careers" element={<CareerPage />} />
         </Route>
 
         <Route path="/admin/"></Route>

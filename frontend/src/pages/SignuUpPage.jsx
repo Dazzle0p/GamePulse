@@ -11,26 +11,51 @@ import {
   Home,
   ArrowRight,
   X,
+  ChevronDown,
 } from "react-feather";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState("signup");
   const [isLoading, setIsLoading] = useState(false);
+  const [role, setRole] = useState("Login as");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const API_URL = import.meta.env.VITE_API_URL;
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate login process
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(`${API_URL}/api/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password, role }),
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        // Store token
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.user);
+        // Redirect to dashboard
+        navigate("/");
+      } else {
+        // Handle error
+        alert(data.message);
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
+    } finally {
       setIsLoading(false);
-      // Here you would handle actual login logic
-    }, 1500);
+    }
   };
 
   const handleClick = () => {
@@ -93,16 +118,8 @@ const SignUpPage = () => {
       <div className="md:w-1/2 flex items-center justify-center p-6 md:p-12">
         <div className="w-full max-w-md">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2">
-              {activeTab === "login"
-                ? "Login to Your Account"
-                : "Create New Account"}
-            </h2>
-            <p className="text-gray-400">
-              {activeTab === "login"
-                ? "Enter your credentials to access your dashboard"
-                : "Join our gaming community today"}
-            </p>
+            <h2 className="text-3xl font-bold mb-2">Create New Account</h2>
+            <p className="text-gray-400">Join our gaming community today</p>
           </div>
 
           {/* Tabs */}
@@ -137,6 +154,8 @@ const SignUpPage = () => {
                     <User className="w-5 h-5" />
                   </div>
                   <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     type="text"
                     placeholder="Full name"
                     className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
@@ -149,6 +168,8 @@ const SignUpPage = () => {
                     <AtSign className="w-5 h-5" />
                   </div>
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     placeholder="Email address"
                     className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
@@ -156,7 +177,7 @@ const SignUpPage = () => {
                   />
                 </div>
 
-                <div className="relative">
+                {/* <div className="relative">
                   <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                     <Smartphone className="w-5 h-5" />
                   </div>
@@ -166,13 +187,15 @@ const SignUpPage = () => {
                     className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     required
                   />
-                </div>
+                </div> */}
 
                 <div className="relative">
                   <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                     <Lock className="w-5 h-5" />
                   </div>
                   <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     type={showPassword ? "text" : "password"}
                     placeholder="Create password"
                     className="w-full pl-12 pr-12 py-3 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
@@ -189,6 +212,32 @@ const SignUpPage = () => {
                       <Eye className="w-5 h-5" />
                     )}
                   </button>
+                </div>
+              </div>
+              <div>
+                {/* Right Column: Dropdown */}
+                <div className="relative">
+                  <select
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    className="w-full pl-4 pr-10 py-3 bg-gray-800 text-white border border-gray-700 rounded-xl 
+                 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent appearance-none"
+                    required
+                  >
+                    <option value="" disabled className="text-gray-400">
+                      Login as
+                    </option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                    <option value="org-admin">Organization Admin</option>
+                    <option value="to-admin">Tournament Organizer</option>
+                    <option value="media-admin">Media Admin</option>
+                  </select>
+
+                  {/* Custom Arrow */}
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
+                    <ChevronDown className="w-5 h-5" />
+                  </span>
                 </div>
               </div>
 

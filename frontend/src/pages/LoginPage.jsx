@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Trophy } from "lucide-react";
+import Button from "../components/Ui/Button";
 import {
   Eye,
   EyeOff,
@@ -9,6 +10,7 @@ import {
   AtSign,
   LogIn,
   X,
+  ChevronDown,
 } from "react-feather";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -16,20 +18,47 @@ import { Link } from "react-router-dom";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("user");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState("login");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate login process
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password, role }),
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        // Store token
+        localStorage.setItem("token", data.token);
+        // Store User
+        // Convert object to JSON string before storing
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+        // Redirect to dashboard
+        navigate("/");
+      } else {
+        // Handle error
+        alert(data.message);
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
+    } finally {
       setIsLoading(false);
-      // Here you would handle actual login logic
-    }, 1500);
+    }
   };
 
   const handleClick = () => {
@@ -37,7 +66,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-900 text-white">
+    <div className="max-h-screen flex flex-col md:flex-row bg-gray-900 text-white">
       {/* Left Side - Brand Showcase */}
       <div className="md:w-1/2 relative hidden md:flex">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 to-orange-900/80">
@@ -170,6 +199,33 @@ const LoginPage = () => {
                       <Eye className="w-5 h-5" />
                     )}
                   </button>
+                </div>
+
+                <div>
+                  {/* Right Column: Dropdown */}
+                  <div className="relative">
+                    <select
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                      className="w-full pl-4 pr-10 py-3 bg-gray-800 text-white border border-gray-700 rounded-xl 
+                 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent appearance-none"
+                      required
+                    >
+                      <option value="" disabled className="text-gray-400">
+                        Login as
+                      </option>
+                      <option value="user">User</option>
+                      <option value="admin">Admin</option>
+                      <option value="org-admin">Organization Admin</option>
+                      <option value="to-admin">Tournament Organizer</option>
+                      <option value="media-admin">Media Admin</option>
+                    </select>
+
+                    {/* Custom Arrow */}
+                    <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
+                      <ChevronDown className="w-5 h-5" />
+                    </span>
+                  </div>
                 </div>
               </div>
 

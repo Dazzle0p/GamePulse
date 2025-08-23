@@ -6,6 +6,7 @@ const Button = ({
   size = "default",
   icon: Icon,
   className = "",
+  onClick,
   ...props
 }) => {
   const baseClasses =
@@ -13,9 +14,9 @@ const Button = ({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-gpred-500 to-gporange-500 text-white hover:from-gpred-700 hover:to-gporange-700",
+      "bg-gradient-to-r from-gpred-300 to-gporange-300 text-white shadow-gpglow-md hover:from-gpred-500 hover:to-gporange-500 hover:shadow-gpglow-lg",
     secondary:
-      "bg-gpdark border border-gpred-500 text-gpred-500 hover:bg-gpred-500/10",
+      "border border-gpred-500 text-gporange-500 hover:text-white hover:bg-gradient-to-r hover:from-gpred-300/30 hover:to-gporange-300/30",
     outline:
       "border border-gpgray/30 text-gpgray hover:border-gpred-500 hover:text-white",
   };
@@ -28,7 +29,7 @@ const Button = ({
   const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} {...props} onClick={onClick}>
       {children}
       {Icon && <Icon className="w-4 h-4" />}
     </button>

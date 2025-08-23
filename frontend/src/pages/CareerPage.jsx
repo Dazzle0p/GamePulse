@@ -13,7 +13,7 @@ import {
   Award,
 } from "lucide-react";
 
-const Careers = () => {
+const CareerPage = () => {
   const jobOpenings = [
     {
       title: "Esports Tournament Manager",
@@ -301,4 +301,4 @@ const Careers = () => {
   );
 };
 
-export default Careers;
+export default CareerPage;
