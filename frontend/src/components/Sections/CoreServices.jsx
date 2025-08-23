@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Trophy, Video, HeartHandshake, Check, ArrowRight } from "lucide-react";
 import { CardSpotlight } from "../Ui/CardSpotlight";
+import SectionHeader from "../Ui/SectionHeader";
 
 const services = [
   {
@@ -74,12 +75,6 @@ const ServiceCard = ({
           </li>
         ))}
       </ul>
-      {/* <button
-        className=" px-3 py-3 border border-orange-500 text-orange-400 rounded-lg
-      hover:bg-orange-500/10 button-gradient w-full flex gap-0.5 justify-center"
-      >
-        Learn More <ArrowRight className="h-5 w-5" />
-      </button> */}
     </div>
   </CardSpotlight>
 );
@@ -87,6 +82,7 @@ const ServiceCard = ({
 export const CoreServices = () => {
   return (
     <section>
+      <SectionHeader title="Core Services" />
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {services.map((service, index) => (
           <ServiceCard key={index} {...service} isHighlighted={index === 1} />

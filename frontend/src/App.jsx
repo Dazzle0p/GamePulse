@@ -4,17 +4,16 @@ import Home from "./pages/Home";
 import Layout from "./components/Layout/Layout";
 import NewsPage from "./pages/NewsPage";
 import Creators from "./pages/Creators";
-import Organizations from "./pages/Organizations";
-import OrganizationDetails from "./components/subPages/OrganizationDetails";
+import FeaturedOrg from "./organizationPage/AllOrganizations";
+import OrganizationDetails from "./organizationPage/OrganizationDetails";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignuUpPage";
-import EsportsHomepage from "./pages/EsportsHome";
+import EsportsHomepage from "./pages/Esports";
 import GameDetailPage from "./pages/GameDetailPage";
 import InfluencerProfile from "./components/subPages/InfluencerProfile";
 import ShopPage from "./pages/ShopPage";
-import KnowAboutUs from "./components/subPages/KnowAboutUs";
-import KnowGamingEsports from "./components/subPages/KnowGamingEsports";
-import AdminOrganizers from "./adminPages/AdminOrganizers ";
+import KnowAboutUs from "./pages/KnowAboutUs";
+import KnowGamingEsports from "./pages/KnowGamingEsports";
 import Organizers from "./pages/Organizers";
 import ScrollToTop from "./components/Compo/ScrollToTop";
 import MediaPromotion from "./pages/MediaPromotion";
@@ -22,7 +21,6 @@ import Careers from "./pages/Careers";
 import LearningResources from "./pages/LearningResources";
 import ServicesSection from "./components/Sections/ServicesSection";
 import GamingTalentPage from "./pages/GamingTalentPage";
-import OrganizationDashboard from "./adminPages/OrganizationDashboard";
 const App = () => {
   return (
     <BrowserRouter>
@@ -47,7 +45,7 @@ const App = () => {
           <Route path="creators" element={<Creators />} />
           <Route path="creators/:id" element={<InfluencerProfile />} />
 
-          <Route path="organizations" element={<Organizations />} />
+          <Route path="organizations" element={<FeaturedOrg />} />
           <Route path="organizations/:id" element={<OrganizationDetails />} />
 
           <Route path="organizers" element={<Organizers />} />
@@ -57,10 +55,7 @@ const App = () => {
           <Route path="/careers" element={<Careers />} />
         </Route>
 
-        <Route path="/admin/">
-          <Route path="turnament-organizer" element={<AdminOrganizers />} />
-          <Route path="org-dashboard" element={<OrganizationDashboard />} />
-        </Route>
+        <Route path="/admin/"></Route>
         <Route path="/shop" element={<ShopPage />} />
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { LinkedinIcon } from "lucide-react";
 
 const LogoCarousel = ({ logos }) => {
   const extendedLogos = [...logos, ...logos, ...logos];

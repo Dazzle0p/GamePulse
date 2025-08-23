@@ -3,7 +3,6 @@ import Hero from "../components/Sections/Hero";
 import FeaturedTournament from "../components/Sections/FeaturedTournament";
 import WhatWeDo from "../components/subPages/WhatWeDo";
 import FeaturedOrgs from "../components/Sections/FeaturedOrgs";
-import { CoreServices } from "../components/Sections/CoreServices";
 import PlatFeatures from "../components/Compo/PlatFeatures";
 
 const Home = () => {
