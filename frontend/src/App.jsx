@@ -22,6 +22,7 @@ import Careers from "./pages/Careers";
 import LearningResources from "./pages/LearningResources";
 import ServicesSection from "./components/Sections/ServicesSection";
 import GamingTalentPage from "./pages/GamingTalentPage";
+import OrganizationDashboard from "./adminPages/OrganizationDashboard";
 const App = () => {
   return (
     <BrowserRouter>
@@ -58,6 +59,7 @@ const App = () => {
 
         <Route path="/admin/">
           <Route path="turnament-organizer" element={<AdminOrganizers />} />
+          <Route path="org-dashboard" element={<OrganizationDashboard />} />
         </Route>
         <Route path="/shop" element={<ShopPage />} />
       </Routes>

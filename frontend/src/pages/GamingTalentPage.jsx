@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TalentCard from "../components/Ui/TalentCard";
 import { useNavigate } from "react-router-dom";
 import {
   Trophy,
@@ -459,6 +460,7 @@ const TopEsportsPlayersSection = ({
     {
       id: 1,
       name: "Jonathan",
+      image: "url",
       realName: "Jonathan",
       game: "BGMI",
       team: "GodLike Esports",
@@ -602,121 +604,6 @@ const SectionLayout = ({
       </div>
       {children}
     </section>
-  );
-};
-
-// Talent Card Component
-const TalentCard = ({ talent, isHovered, onHover, type }) => {
-  const navigate = useNavigate();
-
-  const getTierBadge = (tier) => {
-    const styles = {
-      "S-Tier": "bg-gradient-to-r from-yellow-600 to-amber-500",
-      Elite: "bg-gradient-to-r from-blue-600 to-indigo-500",
-      "A-Tier": "bg-gradient-to-r from-purple-600 to-indigo-500",
-      "B-Tier": "bg-gradient-to-r from-green-600 to-emerald-500",
-    };
-    return styles[tier] || "bg-gray-600";
-  };
-
-  const getTypeSpecificContent = () => {
-    switch (type) {
-      case "creator":
-        return (
-          <>
-            <div className="flex items-center gap-2 mb-2">
-              {talent.platform === "YouTube" ? (
-                <Youtube className="w-5 h-5 text-red-500" />
-              ) : (
-                <Twitch className="w-5 h-5 text-purple-500" />
-              )}
-              <span className="font-medium">{talent.platform}</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 mb-3">
-              <StatBox label="Subscribers" value={talent.subscribers} />
-              <StatBox label="Avg Views" value={talent.averageViews} />
-            </div>
-          </>
-        );
-      case "caster":
-        return (
-          <>
-            <div className="mb-2">
-              <p className="text-sm text-gray-400">Specialty</p>
-              <p className="font-medium">{talent.specialty}</p>
-            </div>
-            <div className="grid grid-cols-2 gap-2 mb-3">
-              <StatBox label="Experience" value={talent.experience} />
-              <StatBox
-                label="Major Events"
-                value={talent.events.split(", ").length}
-              />
-            </div>
-          </>
-        );
-      case "player":
-        return (
-          <>
-            <div className="mb-2">
-              <p className="text-sm text-gray-400">Team</p>
-              <p className="font-medium">{talent.team}</p>
-            </div>
-            <div className="grid grid-cols-2 gap-2 mb-3">
-              <StatBox label="Game" value={talent.game} />
-              <StatBox label="Earnings" value={talent.earnings} />
-            </div>
-          </>
-        );
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <div
-      className={`bg-gray-900 rounded-xl border border-gray-800 overflow-hidden transition-all duration-300 hover:border-orange-500 hover:shadow-lg hover:shadow-orange-500/20 ${
-        isHovered ? "scale-[1.02]" : ""
-      }`}
-      onMouseEnter={() => onHover(talent.id)}
-      onMouseLeave={() => onHover(null)}
-    >
-      {/* Header with Tier Badge */}
-      <div className="relative h-40 bg-gray-800 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
-        <div
-          className={`absolute top-3 right-3 px-2 py-1 text-xs font-bold rounded-full ${getTierBadge(
-            talent.tier
-          )} z-20`}
-        >
-          {talent.tier}
-        </div>
-        <div className="absolute bottom-3 left-3 z-20">
-          <h3 className="text-xl font-bold">{talent.name}</h3>
-          <p className="text-orange-400 text-sm">
-            {talent.realName || talent.game}
-          </p>
-        </div>
-        <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?q=80&w=1000')] bg-cover bg-center"></div>
-      </div>
-
-      {/* Content Section */}
-      <div className="p-4">
-        {getTypeSpecificContent()}
-
-        {/* Region */}
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-sm text-gray-400">Region: {talent.region}</span>
-        </div>
-
-        {/* View Button */}
-        <button
-          onClick={() => navigate(`/${type}s/${talent.id}`)}
-          className="w-full py-2 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 rounded-lg text-sm flex items-center justify-center gap-1 transition-all hover:gap-2"
-        >
-          View Profile <ArrowRight className="w-4 h-4" />
-        </button>
-      </div>
-    </div>
   );
 };
 

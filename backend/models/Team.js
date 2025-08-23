@@ -1,17 +1,21 @@
-// /models/Team.js
+// models/Team.js
+const mongoose = require("mongoose");
 
-import mongoose from "mongoose";
-import { playerSchema } from "./subSchemas.js";
+const playerSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  realName: String,
+  role: { type: String, required: true },
+  profileImage: String,
+});
 
 const teamSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true, trim: true },
+    name: { type: String, required: true },
     game: { type: String, required: true },
-    logoUrl: { type: String, required: true },
-    achievements: { type: Number, default: 0 },
-    establishedYear: { type: Number },
-    players: [playerSchema], // Embedding the player sub-schema
-    // Reference to the parent organization
+    logoUrl: String,
+    achievements: Number,
+    establishedYear: Number,
+    players: [playerSchema],
     organization: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Organization",
@@ -21,4 +25,4 @@ const teamSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Team", teamSchema);
+module.exports = mongoose.model("Team", teamSchema);

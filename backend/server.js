@@ -1,44 +1,81 @@
-import dotenv from "dotenv";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const hpp = require("hpp");
+const rateLimit = require("express-rate-limit");
+const dotenv = require("dotenv");
+const path = require("path");
+
+// Load env vars
 dotenv.config();
-import connectDB from "./config/db.js";
 
-import express from "express";
-import organizationRoutes from "./routes/organizationRoutes.js";
-import { nestedTeamRouter, globalTeamRouter } from "./routes/teamRoutes.js";
-import {
-  nestedCreatorRouter,
-  globalCreatorRouter,
-} from "./routes/creatorRoutes.js";
+// Route files
+const organizations = require("./routes/organizations");
+const players = require("./routes/players");
+const teams = require("./routes/teams");
+const creators = require("./routes/creators");
+const auth = require("./routes/auth");
+const sponsors = require("./routes/sponsors");
+const uploads = require("./routes/uploads");
 
-// import { nestedCreatorRouter, globalCreatorRouter } from './routes/creatorRoutes.js';
+// Connect to database
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const app = express();
+
+// Body parser
+app.use(express.json({ limit: "10mb" }));
+
+// Cookie parser (if using cookies for auth)
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+// Security middleware
+app.use(helmet());
+app.use(mongoSanitize());
+app.use(xss());
+app.use(hpp());
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 mins
+  max: 100,
+});
+app.use(limiter);
+
+// Enable CORS
+app.use(cors());
+
+// Serve static files in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
+  });
+}
+
+// Mount routers
+app.use("/api/organizations", organizations);
+app.use("/api/players", players);
+app.use("/api/teams", teams);
+app.use("/api/creators", creators);
+app.use("/api/auth", auth);
+app.use("/api/sponsors", sponsors);
+app.use("/api/uploads", uploads);
+
+// Error handling middleware
+const errorHandler = require("./middleware/error");
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 5000;
 
-// --- Connecting Db ---
-connectDB();
-
-// --- Middleware ---
-app.use(express.json()); // To parse JSON bodies
-
-// --- API Routes ---
-app.use("/api/organizations", organizationRoutes);
-
-// For nested team routes -> /api/organizations/:orgId/teams
-organizationRoutes.use("/:orgId/teams", nestedTeamRouter);
-
-// For global team routes -> /api/teams
-app.use("/api/teams", globalTeamRouter, nestedTeamRouter);
-
-// --- Creator Routes ---
-
-// For nested routes -> /api/organizations/:orgId/creators
-organizationRoutes.use("/:orgId/creators", nestedCreatorRouter);
-
-// For global routes -> /api/creators
-app.use("/api/creators", globalCreatorRouter, nestedCreatorRouter);
-
-// --- Start Server ---
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 });

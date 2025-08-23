@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import s8ulbg from "../../assets/s8ulBg.webp";
 import s8ullogo from "../../assets/s8ullogo.png";
+import TalentCard from "../Ui/TalentCard";
 import {
   Youtube,
   Instagram,
@@ -20,8 +21,13 @@ import {
   Phone,
   ExternalLink,
   LinkedinIcon,
+  Gamepad,
+  Swords,
+  Shield,
+  Crown,
 } from "lucide-react";
 import LogoCarousel from "../Ui/LogoCarousel";
+import TeamsSection from "../Sections/TeamsSection";
 
 const organizationData = {
   name: "NEXUS GAMING",
@@ -612,7 +618,6 @@ const OrganizationDetails = () => {
           </div>
         </div>
       </section>
-
       {/* Social Media Section */}
       <section className="py-20 bg-gpdark">
         <div className="container mx-auto px-6">
@@ -659,7 +664,6 @@ const OrganizationDetails = () => {
           </div>
         </div>
       </section>
-
       {/* Sponsors Carousel */}
       {organizationData.sponsors.length > 0 && (
         <section className="pt-20 bg-gpblack">
@@ -674,112 +678,8 @@ const OrganizationDetails = () => {
           </div>
         </section>
       )}
-
       {/* Teams Section */}
-      {organizationData.participatingTeams.length > 0 && (
-        <section className="py-20 bg-gpblack">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-12 animate-fade-in">
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gpred-500 to-gporange-500 bg-clip-text text-transparent">
-                Our Teams
-              </h2>
-              <p className="text-xl text-gpgray">
-                Elite squads competing at the highest level
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {organizationData.participatingTeams.map((team) => (
-                <div
-                  key={team._id}
-                  className="bg-gpdark border border-gpgray/20 rounded-2xl p-6 group hover:border-gpred-500 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-4 mb-6">
-                    {team.logoUrl && (
-                      <img
-                        src={team.logoUrl}
-                        alt={`${team.name} logo`}
-                        className="w-16 h-16 object-contain rounded-lg"
-                      />
-                    )}
-                    <div>
-                      <h3 className="text-2xl font-bold text-white group-hover:text-gpred-500 transition-colors">
-                        {team.name}
-                      </h3>
-                      <p className="text-lg text-gpred-500 font-semibold">
-                        {team.game}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-6 mb-6 text-sm text-gpgray">
-                    <div className="flex items-center space-x-2">
-                      <Users className="w-4 h-4" />
-                      <span>{team.players.length} Players</span>
-                    </div>
-                    {team.achievements && (
-                      <div className="flex items-center space-x-2">
-                        <Trophy className="w-4 h-4" />
-                        <span>{team.achievements} Wins</span>
-                      </div>
-                    )}
-                    {team.establishedYear && (
-                      <div className="flex items-center space-x-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>{team.establishedYear}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4 text-white">
-                      Roster
-                    </h4>
-                    <div className="space-y-3">
-                      {team.players.slice(0, 5).map((player, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center space-x-3 p-3 bg-gpblack/50 rounded-lg"
-                        >
-                          {player.profileImage ? (
-                            <img
-                              src={player.profileImage}
-                              alt={player.name}
-                              className="w-10 h-10 object-cover rounded-full"
-                            />
-                          ) : (
-                            <div className="w-10 h-10 bg-gpred-500/20 rounded-full flex items-center justify-center">
-                              <span className="text-gpred-500 font-semibold text-sm">
-                                {player.name.charAt(0).toUpperCase()}
-                              </span>
-                            </div>
-                          )}
-                          <div>
-                            <p className="font-medium text-white">
-                              {player.name}
-                            </p>
-                            <p className="text-sm text-gpgray">{player.role}</p>
-                          </div>
-                        </div>
-                      ))}
-                      {team.players.length > 5 && (
-                        <p className="text-sm text-gpgray text-center py-2">
-                          +{team.players.length - 5} more players
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <button className="w-full mt-6 btn-social border border-gpred-500 text-gpred-500 hover:bg-gpred-500/10 font-bold py-3 px-4 rounded-lg text-center transition-colors duration-300">
-                    View Full Roster
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
+      <TeamsSection />
       {/* Creators Section */}
       {organizationData.creators.length > 0 && (
         <section className="py-20 bg-gpdark">
@@ -897,7 +797,6 @@ const OrganizationDetails = () => {
           </div>
         </section>
       )}
-
       {/* Achievements Section */}
       {organizationData.achievements.length > 0 && (
         <section className="py-20 bg-gpblack">
