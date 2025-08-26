@@ -1,11 +1,20 @@
 /* src/index.css */
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 @import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 @theme {
   /* Base colors */
   --color-gpblack: #0a0a0a;
   --color-gpdark: #222222;
   --color-gpgray: #aaaaaa;
+
+  /* Font style */
 
   /* Aggressive accent colors */
   --color-gpred-300: #ff3300;
@@ -28,6 +37,12 @@
     to right,
     var(--color-gporange-300),
     var(--color-gpred-300)
+  );
+  --gradient-orangeredorange: linear-gradient(
+    to right,
+    var(--color-gporange-300),
+    var(--color-gpred-300),
+    var(--color-gporange-300)
   );
 
   /* Shadows */
@@ -69,8 +84,29 @@
   }
 }
 
-/* Add these animations to Tailwind */
+@keyframes shine {
+  0% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: -300% 0;
+  }
+}
+
+.animate-shine {
+  animation: shine 5s linear infinite;
+  background-size: 200% auto;
+}
+
 @layer utilities {
+  .bg-orangered {
+    background: var(--gradient-orangered);
+  }
+
+  .bg-redorange {
+    background: var(--gradient-redorange);
+  }
+
   .animate-fade-in {
     animation: fade-in 1s ease-out forwards;
   }
@@ -91,5 +127,21 @@
       ),
       linear-gradient(90deg, rgba(255, 85, 0, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
+  }
+
+  .creepster-regular {
+    font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .animate-shine {
+    background-image: var(--gradient-orangeredorange);
+    background-size: 200% 100%;
+    background-repeat: repeat;
+    background-position: 0 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 10s linear infinite;
   }
 }

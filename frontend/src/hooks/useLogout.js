@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const useLogout = () => {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ const useLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/login");
-    alert("You have been logged out successfully");
+    toast.success("You have been logged out successfully");
   };
 
   return logout;

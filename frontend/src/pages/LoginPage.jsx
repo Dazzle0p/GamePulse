@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Trophy } from "lucide-react";
+import { Toaster, toast } from "sonner";
 import Button from "../components/Ui/Button";
 import {
   Eye,
@@ -48,14 +49,14 @@ const LoginPage = () => {
         // Store User
         // Convert object to JSON string before storing
         localStorage.setItem("user", JSON.stringify(data.data.user));
-        // Redirect to dashboard
+        // Redirect to Home Page
         navigate("/");
       } else {
         // Handle error
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
-      alert("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -68,6 +69,7 @@ const LoginPage = () => {
   return (
     <div className="max-h-screen flex flex-col md:flex-row bg-gray-900 text-white">
       {/* Left Side - Brand Showcase */}
+
       <div className="md:w-1/2 relative hidden md:flex">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 to-orange-900/80">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000')] bg-cover bg-center mix-blend-overlay opacity-20" />
