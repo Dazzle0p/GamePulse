@@ -30,6 +30,14 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+// Welcome ROute
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Welcome to the API! Use /api/health to check server status.",
+  });
+});
+
 // Handle undefined routes
 app.all("*", (req, res) => {
   res.status(404).json({
