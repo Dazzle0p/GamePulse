@@ -39,9 +39,9 @@ const Header = () => {
           <NavLink to="/" icon={HomeIcon}>
             Home
           </NavLink>
-          <NavLink to="/services" icon={ServerIcon}>
+          {/* <NavLink to="/services" icon={ServerIcon}>
             Services
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/esports" icon={Trophy}>
             Esports
           </NavLink>
@@ -51,14 +51,14 @@ const Header = () => {
           <NavLink to="/news" icon={Newspaper}>
             Community
           </NavLink>
-          {/* <NavLink
+          <NavLink
             to="/shop"
             target="_blank"
             rel="noopener noreferrer"
             icon={ShoppingBag}
           >
             Shop
-          </NavLink> */}
+          </NavLink>
         </nav>
 
         <div className="flex items-center space-x-4">
@@ -75,7 +75,7 @@ const Header = () => {
 
               {/* Dropdown Menu */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-black/90 backdrop-blur-md border border-white/20 rounded-md shadow-lg py-1 z-50">
+                <div className="absolute right-0 mt-2 w-48 bg-black/60 backdrop-blur-md border border-white/20 rounded-md shadow-lg py-1 z-50">
                   <Link
                     to="/profile"
                     className="block px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors"
@@ -85,6 +85,16 @@ const Header = () => {
                     }}
                   >
                     Profile
+                  </Link>
+                  <Link
+                    to="/services"
+                    className="block px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors"
+                    onClick={() => {
+                      setIsDropdownOpen(false);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Services
                   </Link>
                   <button
                     onClick={() => {
