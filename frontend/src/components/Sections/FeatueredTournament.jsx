@@ -33,7 +33,7 @@ const tournaments = [
 
 export default function FeatueredTournament() {
   return (
-    <div className="pt-5 pb-10">
+    <div className="pt-5 pb-15">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Featured <span className="text-orange-500">Tournament</span>

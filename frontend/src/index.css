@@ -17,6 +17,9 @@ video {
 .text-gradient-redorange {
   @apply bg-gradient-to-r from-[#ff3300] to-[#ff7700] bg-clip-text text-transparent;
 }
+.text-gradient-orangered {
+  @apply bg-gradient-to-l from-[#ff3300] to-[#ff7700] bg-clip-text text-transparent;
+}
 
 .rubik-dirt-regular {
   font-family: "Rubik Dirt", system-ui;
