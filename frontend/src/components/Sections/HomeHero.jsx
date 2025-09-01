@@ -1,7 +1,6 @@
 import { Trophy, Users, Calendar, Play, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-import bgVideo from "../../assets/hero-4.mp4";
-import ShinyText from "../Ui/ShinyText";
+import bgVideo from "../../assets/bgVideo1.mp4";
 
 const Hero = () => {
   return (
@@ -13,26 +12,25 @@ const Hero = () => {
             autoPlay
             loop
             muted
+            playsInline
+            preload="auto"
             className="w-full h-full object-cover"
-            style={{ filter: "opacity(30%)" }} // Applying opacity here
+            style={{ filter: "opacity(30%)" }}
           >
             <source src={bgVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
 
-        <ShinyText
-          className="creepster-regular text-gradient-orangered absolute bottom-5 right-5 z-40 uppercase text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem]"
-          disabled={false}
-          text="GAMING"
-        />
+        <h2 className="creepster-regular text-gradient-redorange absolute md:bottom-5 md:right-5 z-40 uppercase text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem]">
+          GAMING
+        </h2>
         {/* This div is now only for the overlay/content */}
-        <div className="left-5 mx-auto relative z-10">
+        <div className="md:left-5 mx-auto relative z-10">
           <div className=" space-y-6">
-            <ShinyText
-              className="creepster-regular text-gradient-orangered text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem] text-blue-50"
-              text="REDEFINE"
-            />
+            <h1 className="creepster-regular text-gradient-redorange text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem] text-blue-50">
+              REDEFINE
+            </h1>
             <p className="text-xl md:text-2xl font-bold text-gray-400 text-shadow-md text-shadow-black ">
               Unite gamers, creators, and champions - your gateway to
               <br />

@@ -1,6 +1,7 @@
 import React from "react";
 import { Calendar, BarChart2, MessageSquare, Shield } from "react-feather";
 import { Megaphone, Gamepad } from "lucide-react";
+import SpotlightCard from "../Ui/SpotlightCard";
 const features = [
   {
     icon: <Gamepad className="w-8 h-8 text-orange-500" />,
@@ -53,14 +54,11 @@ const PlatFeatures = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => (
-          <div
-            key={index}
-            className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-orange-500 transition-all duration-300"
-          >
+          <SpotlightCard className="custom-spotlight-card">
             <div className="mb-5">{feature.icon}</div>
             <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
             <p className="text-gray-400">{feature.description}</p>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </section>

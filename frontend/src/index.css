@@ -1,11 +1,27 @@
 /* src/index.css */
 @import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
 @import "tailwindcss";
 
 html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #222222;
+}
+video {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.text-gradient-redorange {
+  @apply bg-gradient-to-r from-[#ff3300] to-[#ff7700] bg-clip-text text-transparent;
+}
+
+.rubik-dirt-regular {
+  font-family: "Rubik Dirt", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @theme {
@@ -50,6 +66,7 @@ body {
   --shadow-gpglow-md: 0 0 10px rgba(255, 69, 0, 0.5);
   --shadow-gpglow-lg: 0 0 15px rgba(255, 69, 0, 0.7);
 }
+
 /* Custom animations */
 @keyframes fade-in {
   from {
@@ -72,27 +89,6 @@ body {
   }
 }
 
-@keyframes glow-pulse {
-  0%,
-  100% {
-    opacity: 0.6;
-    box-shadow: 0 0 5px var(--color-gpred-500);
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 20px var(--color-gpred-500), 0 0 30px var(--color-gpred-300);
-  }
-}
-
-@keyframes shine {
-  0% {
-    background-position: 300% 0;
-  }
-  100% {
-    background-position: -300% 0;
-  }
-}
-
 .animate-shine {
   animation: shine 5s linear infinite;
   background-size: 200% auto;
@@ -109,10 +105,6 @@ body {
 
   .animate-fade-in {
     animation: fade-in 1s ease-out forwards;
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
   }
 
   .animate-glow-pulse {
@@ -133,15 +125,5 @@ body {
     font-family: "Creepster", system-ui;
     font-weight: 400;
     font-style: normal;
-  }
-
-  .animate-shine {
-    background-image: var(--gradient-orangeredorange);
-    background-size: 200% 100%;
-    background-repeat: repeat;
-    background-position: 0 0;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 10s linear infinite;
   }
 }
