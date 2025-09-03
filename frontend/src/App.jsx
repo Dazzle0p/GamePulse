@@ -21,6 +21,8 @@ import CareerPage from "./pages/CareerPage";
 import LearningResources from "./pages/LearningResources";
 import ServicesSection from "./components/Sections/ServicesSection";
 import GamingTalentPage from "./pages/GamingTalentPage";
+import AllPlayers from "./pages/AllPlayers";
+import PlayerProfile from "./pages/PlayerProfile";
 const App = () => {
   return (
     <BrowserRouter>
@@ -38,6 +40,9 @@ const App = () => {
 
           <Route path="esports" element={<EsportsHomepage />} />
           <Route path="esports/:id" element={<GameDetailPage />} />
+
+          <Route path="players" element={<AllPlayers />} />
+          <Route path="players/profile/:id" element={<PlayerProfile />} />
 
           <Route path="news" element={<NewsPage />} />
 

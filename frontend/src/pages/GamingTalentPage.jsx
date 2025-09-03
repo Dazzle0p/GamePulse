@@ -22,7 +22,11 @@ import {
   Crown,
   Zap,
   X,
+  Menu,
+  Twitter,
+  Linkedin,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Main Page Component
 const GamingTalentPage = () => {
@@ -460,7 +464,6 @@ const TopEsportsPlayersSection = ({
     {
       id: 1,
       name: "Jonathan",
-      image: "url",
       realName: "Jonathan",
       game: "BGMI",
       team: "GodLike Esports",
@@ -470,8 +473,11 @@ const TopEsportsPlayersSection = ({
       tier: "S-Tier",
       region: "India",
       type: "player",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887",
       social: {
         instagram: "https://instagram.com/jonathan",
+        twitter: "https://twitter.com/jonathan",
       },
     },
     {
@@ -485,8 +491,11 @@ const TopEsportsPlayersSection = ({
       tier: "S-Tier",
       region: "India",
       type: "player",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887",
       social: {
         instagram: "https://instagram.com/goblin",
+        twitter: "https://twitter.com/goblin",
       },
     },
     {
@@ -500,8 +509,11 @@ const TopEsportsPlayersSection = ({
       tier: "A-Tier",
       region: "India",
       type: "player",
+      image:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964",
       social: {
         instagram: "https://instagram.com/snax",
+        twitter: "https://twitter.com/snax",
       },
     },
     {
@@ -515,8 +527,11 @@ const TopEsportsPlayersSection = ({
       tier: "S-Tier",
       region: "India",
       type: "player",
+      image:
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1887",
       social: {
         instagram: "https://instagram.com/omega",
+        twitter: "https://twitter.com/omega",
       },
     },
   ];
@@ -553,12 +568,11 @@ const TopEsportsPlayersSection = ({
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredPlayers.map((player) => (
-          <TalentCard
+          <PlayerCard
             key={player.id}
-            talent={player}
+            player={player}
             isHovered={hoveredCard === player.id}
             onHover={setHoveredCard}
-            type="player"
           />
         ))}
       </div>
@@ -574,6 +588,94 @@ const TopEsportsPlayersSection = ({
         </div>
       )}
     </SectionLayout>
+  );
+};
+
+// New Player Card Component with the second style
+const PlayerCard = ({ player, isHovered, onHover }) => {
+  const accentColor = "bg-orange-500"; // Using orange as accent color for all players
+
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className="relative w-full h-96 rounded-2xl overflow-hidden shadow-lg group"
+      onMouseEnter={() => onHover(player.id)}
+      onMouseLeave={() => onHover(null)}
+    >
+      {/* 1. Background Image */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+        style={{ backgroundImage: `url(${player.image})` }}
+      />
+
+      {/* 2. Gradient Overlay */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+
+      {/* 3. Top Section: Accent and Menu */}
+      <div className="absolute top-0 right-0 p-4 flex items-center">
+        <div
+          className={`w-12 h-1 ${accentColor} transform -rotate-45 translate-x-4 -translate-y-4`}
+        ></div>
+        <button className="text-white/80 hover:text-white transition-colors z-10">
+          <Menu size={24} />
+        </button>
+      </div>
+
+      {/* 4. Main Content Area */}
+      <div className="absolute bottom-0 left-0 p-6 text-white w-full">
+        <h2 className="text-3xl font-bold">{player.name}</h2>
+        <p className="text-sm font-light opacity-80">{player.realName}</p>
+        <p className="text-xs opacity-70 mt-1">
+          {player.team && (
+            <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">
+              {typeof player.team === "object" ? player.team.name : player.team}
+            </span>
+          )}{" "}
+          • {player.game}
+        </p>
+
+        {/* 5. Details Section */}
+        <div className="mt-4 pt-4 border-t border-white/20">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-xs bg-orange-500 px-2 py-1 rounded-full font-bold">
+              {player.tier}
+            </span>
+            <span className="text-xs font-bold">{player.earnings}</span>
+          </div>
+          <p className="text-xs opacity-70 mb-3 line-clamp-2">
+            {player.achievements}
+          </p>
+          <div className="flex justify-between items-center">
+            <button className="px-4 py-2 text-xs font-bold bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+              View Profile
+            </button>
+            <div className="flex space-x-3">
+              {player.social?.twitter && (
+                <a
+                  href={player.social.twitter}
+                  className="opacity-70 hover:opacity-100"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Twitter size={16} />
+                </a>
+              )}
+              {player.social?.instagram && (
+                <a
+                  href={player.social.instagram}
+                  className="opacity-70 hover:opacity-100"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram size={16} />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

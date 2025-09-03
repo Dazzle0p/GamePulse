@@ -22,6 +22,9 @@ app.use(cors());
 // Mount routes
 app.use("/api/auth", require("./routes/auth"));
 
+// Use player routes
+app.use("/api/players", require("./routes/playerRoutes"));
+
 // Health check endpoint
 app.get("/api/health", (req, res) => {
   res.status(200).json({
