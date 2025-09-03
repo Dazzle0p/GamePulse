@@ -285,7 +285,7 @@ const AllPlayers = () => {
 
         {/* Players Grid */}
         {filteredPlayers.length === 0 ? (
-          <div className="text-center py-16">
+          <div className=" max-w-7xl mx-auto text-center py-16">
             <Users size={48} className="mx-auto text-gray-500 mb-4" />
             <h3 className="text-xl font-bold mb-2">No players found</h3>
             <p className="text-gray-400">
@@ -301,7 +301,7 @@ const AllPlayers = () => {
         ) : (
           <motion.div
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             <AnimatePresence>
               {filteredPlayers.map((player, index) => (
