@@ -11,6 +11,10 @@ import {
   Star,
   MapPin,
   Heart,
+  Twitter,
+  Instagram,
+  Youtube,
+  ArrowRight,
 } from "lucide-react";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -315,9 +319,19 @@ const AllPlayers = () => {
   );
 };
 
-// Player Card Component
-// Player Card Component
+// Player Card Component with enhanced data
 const PlayerCard = ({ player, index }) => {
+  const [imageError, setImageError] = useState(false);
+
+  // Calculate total achievements count
+  const achievementsCount = player.achievements?.length || 0;
+
+  // Get the most recent achievement
+  const latestAchievement =
+    player.achievements?.length > 0
+      ? player.achievements[player.achievements.length - 1]
+      : null;
+
   return (
     <motion.div
       layout
@@ -325,80 +339,146 @@ const PlayerCard = ({ player, index }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ delay: index * 0.1, duration: 0.3 }}
-      whileHover={{ y: -8 }}
+      whileHover={{ y: -8, scale: 1.02 }}
       className="relative w-full h-96 rounded-2xl overflow-hidden shadow-lg group"
     >
-      {/* Background Image */}
+      {/* Background Image with error handling */}
       <div
-        className="absolute top-0 inset-0 w-full bg-cover  transition-transform duration-500 group-hover:scale-110"
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
         style={{
-          backgroundImage: player.image
+          backgroundImage: imageError
+            ? "linear-gradient(to right, #1a202c, #2d3748)"
+            : player.image
             ? `url(${player.image})`
             : "linear-gradient(to right, #1a202c, #2d3748)",
+
+          backgroundPositionY: 0,
         }}
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black via-black/50 to-transparent" />
+      {/* Hidden image for error detection */}
+      <img
+        src={player.image}
+        alt=""
+        className="hidden"
+        onError={() => setImageError(true)}
+      />
 
-      {/* Top Section: Accent and Menu */}
-      <div className="absolute top-0 right-0 p-4 flex items-center">
-        <div className="w-12 h-1 bg-orange-500 transform -rotate-45 translate-x-4 -translate-y-4"></div>
-        {player.tier === "S-Tier" && (
-          <div className="text-yellow-400 z-10">
-            <Crown size={20} />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-transparent" />
+
+      {/* Top Section: Tier Badge and Like Count */}
+      <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-start">
+        {player.tier && (
+          <div
+            className={`px-3 py-1 rounded-full text-xs font-bold ${
+              player.tier === "S-Tier"
+                ? "bg-gradient-to-r from-yellow-500 to-orange-500 text-black"
+                : player.tier === "A-Tier"
+                ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white"
+                : "bg-gray-700 text-white"
+            }`}
+          >
+            {player.tier}
           </div>
         )}
+
+        <div className="flex items-center gap-1 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
+          <Heart size={14} className="text-red-400" fill="currentColor" />
+          <span className="text-xs font-medium">{player.likeCount || 0}</span>
+        </div>
       </div>
 
       {/* Main Content Area */}
       <div className="absolute bottom-0 left-0 p-6 text-white w-full">
-        <h2 className="text-2xl font-bold">{player.playerName}</h2>
-        <p className="text-sm font-light opacity-80">{player.realName}</p>
+        <div className="mb-3">
+          <h2 className="text-2xl font-bold truncate">{player.playerName}</h2>
+          <p className="text-sm font-light opacity-80 truncate">
+            {player.realName || player.ign}
+          </p>
+        </div>
 
-        <div className="flex items-center gap-2 mt-2">
-          {player.team && player.team.name && (
-            <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">
+        {/* Player Stats */}
+        <div className="flex items-center gap-3 mb-3">
+          {player.team?.name && (
+            <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full border border-orange-500/30">
               {player.team.name}
             </span>
           )}
+
           {player.game && (
-            <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">
+            <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full border border-blue-500/30">
               {player.game}
+            </span>
+          )}
+
+          {player.country && (
+            <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full border border-green-500/30">
+              {player.country}
             </span>
           )}
         </div>
 
-        {/* Details Section */}
-        <div className="mt-4 pt-4 border-t border-white/20">
-          <div className="flex justify-between items-center mb-3">
-            {player.tier && (
-              <span
-                className={`text-xs px-2 py-1 rounded-full font-bold ${
-                  player.tier === "S-Tier"
-                    ? "bg-gradient-to-r from-yellow-500 to-orange-500 text-black"
-                    : "bg-gray-700 text-white"
-                }`}
-              >
-                {player.tier}
-              </span>
-            )}
-            {player.earnings && (
-              <span className="text-xs font-bold">{player.earnings}</span>
-            )}
-          </div>
-
-          <div className="flex justify-between items-center">
-            <Link
-              to={`/players/profile/${player._id}`}
-              className="px-4 py-2 text-xs font-bold bg-white/20 rounded-full hover:bg-white/30 transition-colors"
-            >
-              View Profile
-            </Link>
-            <div className="flex items-center gap-1 text-xs">
-              <Heart size={12} />
-              <span>{player.likeCount || 0}</span>
+        {/* Additional Stats */}
+        <div className="grid grid-cols-2 gap-2 mb-4 text-xs">
+          {player.earnings && (
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="font-medium">Earnings: {player.earnings}</span>
             </div>
+          )}
+
+          {achievementsCount > 0 && (
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+              <span className="font-medium">
+                {achievementsCount} achievements
+              </span>
+            </div>
+          )}
+
+          {player.status && player.status !== "inActive" && (
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span className="font-medium capitalize">{player.status}</span>
+            </div>
+          )}
+
+          {latestAchievement && (
+            <div className="flex items-center gap-1 col-span-2">
+              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span className="truncate">
+                Last: {latestAchievement.tournament}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex justify-between items-center pt-3 border-t border-white/20">
+          <Link
+            to={`/players/profile/${player._id}`}
+            className="px-4 py-2 text-xs font-bold bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors flex items-center gap-1"
+          >
+            View Profile
+            <ArrowRight className="w-4" />
+          </Link>
+
+          <div className="flex items-center gap-2">
+            {player.socialLinks?.slice(0, 2).map((social, index) => (
+              <a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors p-1 rounded-full bg-black/30 hover:bg-black/50"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {social.platform.toLowerCase() === "twitter" && <Twitter />}
+                {social.platform.toLowerCase() === "instagram" && <Instagram />}
+                {social.platform.toLowerCase() === "youtube" && <Youtube />}
+              </a>
+            ))}
           </div>
         </div>
       </div>

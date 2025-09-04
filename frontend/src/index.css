@@ -1,6 +1,7 @@
 /* src/index.css */
 @import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
 @import "tailwindcss";
 
 html,
@@ -23,6 +24,12 @@ video {
 
 .rubik-dirt-regular {
   font-family: "Rubik Dirt", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
   font-weight: 400;
   font-style: normal;
 }

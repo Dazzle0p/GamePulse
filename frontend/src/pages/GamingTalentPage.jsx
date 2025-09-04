@@ -65,17 +65,17 @@ const GamingTalentPage = () => {
 
       {/* Top Talent Sections */}
       <div className="max-w-7xl mx-auto px-4 py-12">
+        <TopEsportsPlayersSection
+          searchTerm={searchTerm}
+          activeFilter={activeFilter}
+          activeCategory={activeCategory}
+        />
         <TopCreatorsSection
           searchTerm={searchTerm}
           activeFilter={activeFilter}
           activeCategory={activeCategory}
         />
         <TopCastersSection
-          searchTerm={searchTerm}
-          activeFilter={activeFilter}
-          activeCategory={activeCategory}
-        />
-        <TopEsportsPlayersSection
           searchTerm={searchTerm}
           activeFilter={activeFilter}
           activeCategory={activeCategory}

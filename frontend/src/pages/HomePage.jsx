@@ -5,7 +5,7 @@ import TrustedBy from "../components/Sections/TrustedBy";
 
 const HomePage = () => {
   return (
-    <div className="relative bg-gradient-to-b from-gray-900 to-black min-h-screen overflow-hidden text-gray-100">
+    <div className="relative bg-gradient-to-b from-gray-900 to-black min-h-screen text-gray-100">
       <Hero />
       <FeatueredTournament />
       <TrustedBy />
