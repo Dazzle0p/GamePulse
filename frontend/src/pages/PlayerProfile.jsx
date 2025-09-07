@@ -190,7 +190,7 @@ const PlayerProfile = () => {
                   </a>
                 ))}
 
-                <button className="flex items-center gap-1 ml-4 px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors">
+                <button onClick={handleLike} className="flex items-center gap-1 ml-4 px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors">
                   <Heart size={16} />
                   <span>{player.likeCount || 0}</span>
                 </button>

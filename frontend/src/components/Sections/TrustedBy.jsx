@@ -38,7 +38,7 @@ const TrustedBy = () => {
   ];
 
   return (
-    <div className="pt-10">
+    <div>
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Trusted <span className="text-orange-500">By</span>
